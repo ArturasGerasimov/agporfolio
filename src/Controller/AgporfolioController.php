@@ -25,17 +25,21 @@ class AgporfolioController extends AbstractController
      */
     public function mainPage(Request $request)
     {
+        $userOnline = $this->getUser();
+        dump($userOnline);
 
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
 
 
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user, 'the_new_password'
-        ));
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user, $form->get('plainPassword')->getData()
+            ));
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -46,6 +50,7 @@ class AgporfolioController extends AbstractController
 
         return $this->render('main-page/main-index.html.twig', [
             'form' => $form->createView(),
+            'user' => $userOnline
         ]);
     }
 

@@ -19,22 +19,30 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item position-relative">
-                    <span class="nav-link js-scroll-trigger" id="login">Login</span>
+                {% if app.user %}
+                    <li class="nav-item position-relative">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}" id="logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item position-relative">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('login') }}" id="login">Login</a>
+                    </li>
 
-                </li>
-                <li class="nav-item position-relative">
-                    <span class="nav-link js-scroll-trigger" id="sign-up">Sign up</span>
-                    <div id="login-pupup" class="position- ">
-                        {{ form_start(form) }}
-                        {{ form_row(form.username) }}
-                        {{ form_row(form.surname) }}
-                        {{ form_row(form.email) }}
-                        {{ form_row(form.user_nick) }}
-                        {{ form_row(form.password) }}
-                        {{ form_end(form) }}
-                    </div>
-                </li>
+                    <li class="nav-item position-relative">
+                        <span class="nav-link js-scroll-trigger" id="sign-up">Sign up</span>
+                        <div id="login-pupup" class="position- ">
+                            {{ form_start(form) }}
+                            {{ form_row(form.username) }}
+                            {{ form_row(form.surname) }}
+                            {{ form_row(form.email) }}
+                            {{ form_row(form.user_nick) }}
+                            {{ form_row(form.plainPassword.first) }}
+                            {{ form_row(form.plainPassword.second) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </li>
+                {% endif %}
+
             </ul>
         </div>
     </div>

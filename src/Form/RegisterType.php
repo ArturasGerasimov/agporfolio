@@ -19,21 +19,30 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'label' => 'Username'
+                'label' => false,
+                'attr' => ['placeholder' => 'Username',]
             ])
-            ->add('surname', TextType::class)
-            ->add('user_nick', TextType::class)
+            ->add('surname', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => 'Surname',]
+            ])
+            ->add('user_nick', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => 'User nickname',]
+            ])
             ->add('email' , EmailType::class,[
                 'label' => false,
                 'attr' => ['placeholder' => 'Email',]])
-            ->add('password', RepeatedType::class, [
+            ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
-                'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
-            ])
+                'first_options'  => array(
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Password']),
+                'second_options' => array(
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Password',]),
+                'invalid_message' => 'Please make sure your passwords match',
+            ))
             ->add('submit', SubmitType::class);
     }
 
