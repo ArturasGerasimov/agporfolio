@@ -15,29 +15,40 @@
                     <a class="nav-link js-scroll-trigger" href="#portfolio">Recent Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#">Discussions</a>
+                    <a class="nav-link js-scroll-trigger" href="{{ path("comments") }}">Comments</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
                 {% if app.user %}
-                    <li class="nav-item position-relative">
+                    <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}" id="logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                         <span class="nav-link js-scroll-trigger" style="color: #4CAEE3">Logged as {{ user.username }}</span>
                     </li>
                 {% else %}
                     <li class="nav-item position-relative">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('login') }}" id="login">Login</a>
+                        <span class="nav-link js-scroll-trigger" id="login">Login</span>
+                            {% if error %}
+                                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
+                                <input class="login-email" type="text" name="_username" value="{{ lastUsername }}" placeholder="Email">
+                                <input class="login-password" type="password" name="_password" placeholder="Password">
+                                <button class="login-submitbutton" type="submit">Login</button>
+                            </form>
                     </li>
-
                     <li class="nav-item position-relative">
                         <span class="nav-link js-scroll-trigger" id="sign-up">Sign up</span>
-                        <div id="login-pupup" class="position- ">
-                            {{ form_start(form) }}
-                            {{ form_row(form.username) }}
-                            {{ form_row(form.surname) }}
-                            {{ form_row(form.email) }}
-                            {{ form_row(form.user_nick) }}
-                            {{ form_row(form.plainPassword.first) }}
-                            {{ form_row(form.plainPassword.second) }}
+                        {# register form #}
+                        <div id="register-popup" class="position-fixed register-form display-none">
+                            {{ form_start(form, {'attr': {'class': 'registertype-form'}}) }}
+                            {{ form_row(form.username, {'attr': {'class': 'registertype-form_input'}}) }}
+                            {{ form_row(form.surname, {'attr': {'class': 'registertype-form_input'}}) }}
+                            {{ form_row(form.email, {'attr': {'class': 'registertype-form_input'}}) }}
+                            {{ form_row(form.user_nick, {'attr': {'class': 'registertype-form_input'}}) }}
+                            {{ form_row(form.plainPassword.first, {'attr': {'class': 'registertype-form_input'}}) }}
+                            {{ form_row(form.plainPassword.second, {'attr': {'class': 'registertype-form_input'}}) }}
                             {{ form_end(form) }}
                         </div>
                     </li>
@@ -48,15 +59,9 @@
     </div>
 </nav>
 
-
-
-
 <video autoplay muted loop id="myVideo">
     <source src="{{ asset('videos/rain.mp4') }}" type="video/mp4">
 </video>
-
-
-
 
 <!-- Header -->
 <header class="masthead d-flex">
@@ -68,7 +73,6 @@
                 <div id="cursor"></div>
             </em>
         </h3>
-        <!--        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>-->
     </div>
     <div class="overlay"></div>
 </header>
@@ -261,4 +265,183 @@
 
 </div>
 
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <script>
+
+            $( "#sign-up" ).click(function() {
+                if ($("#register-popup").hasClass("display-none")){
+                    $(".login-form").fadeOut("slow").addClass("display-none");
+                    $("#register-popup").slideDown("slow").removeClass("display-none").css("display", "block");
+                } else {
+                    $("#register-popup").slideUp("slow").addClass("display-none");
+                }
+            });
+
+            $( "#login" ).click(function() {
+                if ($(".login-form").hasClass("display-none")){
+                    $("#register-popup").fadeOut("slow").addClass("display-none");
+                    $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
+                } else {
+                    $(".login-form").slideUp("slow").addClass("display-none");
+                }
+            });
+
+
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.1)";
+                document.getElementById("navbar").style.padding = "3px";
+                document.getElementById("logo").style.fontSize = "25px";
+            } else {
+                document.getElementById("navbar").style.background = "none";
+                document.getElementById("navbar").style.padding = "10px";
+                document.getElementById("logo").style.fontSize = "40px";
+                document.getElementById("logo").style.transition = ".4s";
+            }
+        }
+
+        //writing and deleting animation
+
+        // List of sentences
+        var _CONTENT = [
+            "Your trusted web developer!",
+            "There are no limits to your page..."
+        ];
+
+        // Current sentence being processed
+        var _PART = 0;
+
+        // Character number of the current sentence being processed
+        var _PART_INDEX = 0;
+
+        // Holds the handle returned from setInterval
+        var _INTERVAL_VAL;
+
+        // Element that holds the text
+        var _ELEMENT = document.querySelector("#text");
+
+        // Cursor element
+        var _CURSOR = document.querySelector("#cursor");
+
+        // Implements typing effect
+        function Type() {
+            // Get substring with 1 characater added
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX++;
+
+            // If full sentence has been displayed then start to delete the sentence after some time
+            if(text === _CONTENT[_PART]) {
+                // Hide the cursor
+                _CURSOR.style.display = 'none';
+
+                clearInterval(_INTERVAL_VAL);
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Delete, 50);
+                }, 1000);
+            }
+        }
+
+        // Implements deleting effect
+        function Delete() {
+            // Get substring with 1 characater deleted
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX--;
+
+            // If sentence has been deleted then start to display the next sentence
+            if(text === '') {
+                clearInterval(_INTERVAL_VAL);
+
+                // If current sentence was last then display the first one, else move to the next
+                if(_PART == (_CONTENT.length - 1))
+                    _PART = 0;
+                else
+                    _PART++;
+
+                _PART_INDEX = 0;
+
+                // Start to display the next sentence after some time
+                setTimeout(function() {
+                    _CURSOR.style.display = 'inline-block';
+                    _INTERVAL_VAL = setInterval(Type, 100);
+                }, 200);
+            }
+        }
+
+        // Start the typing effect on load
+        _INTERVAL_VAL = setInterval(Type, 100);
+
+        (function($) {
+            "use strict"; // Start of use strict
+
+            // Closes the sidebar menu
+            // $(".menu-toggle").click(function(e) {
+            //   e.preventDefault();
+            //   $("#sidebar-wrapper").toggleClass("active");
+            //   $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+            //   $(this).toggleClass("active");
+            // });
+
+            // Smooth scrolling using jQuery easing
+            $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, "easeInOutExpo");
+                        return false;
+                    }
+                }
+            });
+
+            // Closes responsive menu when a scroll trigger link is clicked
+            $('#sidebar-wrapper .js-scroll-trigger').click(function() {
+                $("#sidebar-wrapper").removeClass("active");
+                $(".menu-toggle").removeClass("active");
+                $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+            });
+
+            // Scroll to top button appear
+            $(document).scroll(function() {
+                var scrollDistance = $(this).scrollTop();
+                if (scrollDistance > 100) {
+                    $('.scroll-to-top').fadeIn();
+                } else {
+                    $('.scroll-to-top').fadeOut();
+                }
+            });
+
+        })(jQuery); // End of use strict
+
+        // Disable Google Maps scrolling
+        // See http://stackoverflow.com/a/25904582/1607849
+        // Disable scroll zooming and bind back the click event
+        var onMapMouseleaveHandler = function(event) {
+            var that = $(this);
+            that.on('click', onMapClickHandler);
+            that.off('mouseleave', onMapMouseleaveHandler);
+            that.find('iframe').css("pointer-events", "none");
+        }
+        var onMapClickHandler = function(event) {
+            var that = $(this);
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+        // Enable map zooming with mouse scroll when the user clicks the map
+        $('.map').on('click', onMapClickHandler);
+
+    </script>
 {% endblock %}

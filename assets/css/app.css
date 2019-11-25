@@ -1,3 +1,9 @@
+/*custom classes*/
+.display-none {
+    display: none;
+}
+
+/************/
 .info {
     font-family: calibri;
 }
@@ -478,6 +484,38 @@ a:hover, a:focus, a:active {
     cursor: pointer;
 }
 
+/*register form, login form*/
 
+.register-form, .login-form {
+    top: 85px;
+    right: 24px;
+}
 
+#register_username, .login-email {
+    height: 38px;
+    padding-left: 20px;
+    border-top-right-radius: 11px;
+    border-top-left-radius: 11px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(76, 174, 227, 0.54);
+}
+
+#register_submit, .login-submitbutton {
+    width: 100%;
+    height: 36px;
+    border: none;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+}
+
+.registertype-form_input, .login-password  {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(76, 174, 227, 0.54);
+    height: 38px;
+    padding-left: 20px;
+}
 

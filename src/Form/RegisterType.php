@@ -40,7 +40,7 @@ class RegisterType extends AbstractType
                     'attr' => ['placeholder' => 'Password']),
                 'second_options' => array(
                     'label' => false,
-                    'attr' => ['placeholder' => 'Password',]),
+                    'attr' => ['placeholder' => 'Repeat password',]),
                 'invalid_message' => 'Please make sure your passwords match',
             ))
             ->add('submit', SubmitType::class);

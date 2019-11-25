@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
+        <a id="logo" class="navbar-brand" href="{{ path('main-page') }}">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="container" style="margin-top: 200px">
+        {{ form_start(form) }}
+        {{ form_row(form.comment) }}
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+    </div>
+
+    {% for comment in comments %}
+        {{ comment.comment }}
+        {{ comment.date|date("m-d-Y")  }}
+        <br>
+    {% endfor %}
+
+{% endblock %}
