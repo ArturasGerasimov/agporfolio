@@ -53,6 +53,11 @@ class User implements UserInterface, \Serializable
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -196,6 +201,18 @@ class User implements UserInterface, \Serializable
                 $user->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

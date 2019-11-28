@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Comments;
 use App\Entity\User;
 use App\Form\CommentType;
+use App\Form\LoginType;
 use App\Form\RegisterType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,21 +33,39 @@ class AgporfolioController extends AbstractController
         // login part
         $error = $utils->getLastAuthenticationError();
         $lastUsername = $utils->getLastUsername();
+        $loginForm = $this->createForm(LoginType::class);
+        $loginForm->handleRequest($request);
 
         $userOnline = $this->getUser();
-        dump($userOnline);
+        //user registration
 
+        return $this->render('main-page/main-index.html.twig', [
+            'loginForm'    => $loginForm->createView(),
+            'user'         => $userOnline,
+            'error'        => $error,
+            'lastUsername' => $lastUsername
+        ]);
+    }
+/**
+     * @Route("/register", name="register")
+     */
+    public function register(Request $request, AuthenticationUtils $utils)
+    {
+
+
+        $userOnline = $this->getUser();
         //user registration
         $user = new User();
-        $form = $this->createForm(RegisterType::class, $user);
-        $form->handleRequest($request);
+        dump($user);
+        $registerForm = $this->createForm(RegisterType::class, $user);
+        $registerForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
+        if ($registerForm->isSubmitted() && $registerForm->isValid()) {
             $user->setPassword($this->passwordEncoder->encodePassword(
-                $user, $form->get('plainPassword')->getData()
+                $user, $registerForm->get('plainPassword')->getData()
             ));
 
+            $user->setRole("ROLE_USER");
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -54,11 +73,9 @@ class AgporfolioController extends AbstractController
             return $this->redirectToRoute('main-page');
         }
 
-        return $this->render('main-page/main-index.html.twig', [
-            'form'         => $form->createView(),
+        return $this->render('security/register.html.twig', [
+            'registerForm' => $registerForm->createView(),
             'user'         => $userOnline,
-            'error'        => $error,
-            'lastUsername' => $lastUsername
         ]);
     }
 
@@ -84,7 +101,7 @@ class AgporfolioController extends AbstractController
 
         $comments = new Comments();
         $form = $this->createForm(CommentType::class, $comments);
-
+//        $this->denyAccessUnlessGranted('view', $form);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comments->setUser( $this->getUser());
@@ -103,5 +120,42 @@ class AgporfolioController extends AbstractController
             'form' => $form->createView(),
             'comments' => $comments
         ]);
+    }
+
+    /**
+     * @Route("/comm/edit/{userComments}", name="comment-edit")
+     */
+    public function updateUserComments(Comments $userComments, Request $request)
+    {
+
+        $form = $this->createForm(CommentType::class, $userComments);
+        $form->handleRequest($request);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $userComments = $entityManager->getRepository(Comments::class)->find($userComments);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return  $this->redirectToRoute('comments');
+        }
+
+        return $this->render(
+            'comments/comment-edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'userComments' => $userComments
+            ]
+        );
+    }
+
+    /**
+     * @Route("/comm/delete/{userComments}", name="comment-delete")
+     */
+    public function deleteUsersComment(Comments $userComments)
+    {
+        $this->getDoctrine()->getManager()->remove($userComments);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('comments');
     }
 }

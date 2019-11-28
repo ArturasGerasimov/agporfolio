@@ -44,7 +44,7 @@ class RegisterType extends AbstractType
                 'invalid_message' => 'Please make sure your passwords match',
             ))
             ->add('submit', SubmitType::class);
-    }
+            }
 
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -53,4 +53,5 @@ class RegisterType extends AbstractType
             'validation_groups' => array('username_validation'),
         ]);
     }
+
 }

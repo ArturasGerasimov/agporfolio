@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h1>comment edit</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.comment) }}
+    {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+
+{% endblock %}
