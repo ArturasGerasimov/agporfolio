@@ -1,45 +1,37 @@
 {% extends("base.html.twig")%}
 {% block body %}
+    <style>
+        .main-page-image {
+            background: url("{{ asset('images/top-page-image.jpg') }}");
+            background-size: cover;
+            /*transform: skewY(-7deg);*/
+            height: 100vh;
+        }
+    </style>
 
     <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a id="logo" class="navbar-brand" href="{{ path('main-page') }}">Home</a>
+        <a id="logo" class="navbar-brand text-white" href="{{ path('main-page') }}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
+    <div class=" main-page-image">
 
-    <div class="wrapper">
-        <h1>Register For An Account</h1>
-        <p>To sign-up for a free basic account please provide us with some basic information using
-            the contact form below. Please use valid credentials.</p>
-{#        <form class="form" method="post" action="yourpage.html">#}
-{#            <input type="text" class="name" placeholder="Name">#}
-{#            <div>#}
-{#                <p class="name-help light-blue">Please enter your first and last name.</p>#}
-{#            </div>#}
-{#            <input type="email" class="email" placeholder="Email">#}
-{#            <div>#}
-{#                <p class="email-help light-blue">Please enter your current email address.</p>#}
-{#            </div>#}
-{#            <input type="submit" class="submit" value="Register">#}
-{#        </form>#}
-        {{ form_start(registerForm, {'attr': {'class': 'registertype-form'}}) }}
-        {{ form_row(registerForm.username, {'attr': {'class': 'registertype-form_input'}}) }}
-        <div>
-            <p class="name-help light-blue">spell your fucking name</p>
+        <div class="wrapper">
+            <h1>Register For An Account</h1>
+            <p class="text-white">To sign-up for a free basic account please provide us with some basic information using
+            {{ form_start(registerForm, {'attr': {'class': 'registertype-form'}}) }}
+            {{ form_row(registerForm.username, {'attr': {'class': 'registertype-form_input'}}) }}
+            {{ form_row(registerForm.surname, {'attr': {'class': 'registertype-form_input'}}) }}
+            {{ form_row(registerForm.email, {'attr': {'class': 'registertype-form_input'}}) }}
+            {{ form_row(registerForm.user_nick, {'attr': {'class': 'registertype-form_input'}}) }}
+            {{ form_row(registerForm.plainPassword.first, {'attr': {'class': 'email'}}) }}
+            {{ form_row(registerForm.plainPassword.second, {'attr': {'class': 'submit'}}) }}
+            {{ form_row(registerForm.submit, {'attr': {'class': 'submit'}}) }}
+            {{ form_end(registerForm) }}
         </div>
-        {{ form_row(registerForm.surname, {'attr': {'class': 'registertype-form_input'}}) }}
-        {{ form_row(registerForm.email, {'attr': {'class': 'registertype-form_input'}}) }}
-        {{ form_row(registerForm.user_nick, {'attr': {'class': 'registertype-form_input'}}) }}
-        {{ form_row(registerForm.plainPassword.first, {'attr': {'class': 'email'}}) }}
-        {{ form_row(registerForm.plainPassword.second, {'attr': {'class': 'submit'}}) }}
-        {{ form_row(registerForm.submit, {'attr': {'class': 'submit'}}) }}
-        {{ form_end(registerForm) }}
+
     </div>
-        <div id="register-popup" class=" register-form">
-
-        </div>
-
 {% endblock %}
  {% block javascripts %}
      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

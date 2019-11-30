@@ -6,9 +6,11 @@
 .display-grid {
     display: grid;
 }
-
+.test-color {
+    filter: brightness(200%);
+}
 .light-blue {
-    color: #4CAEE3 !important;
+    color: #28D2DE !important;
 }
 
 /************/
@@ -72,17 +74,9 @@ header div h3 {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-#myVideo {
-    z-index: -1;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-#white-background {
-    background-color: white;
+/*navbar*/
+.nav-link, #logo {
+    text-shadow: -4px 5px 11px rgba(255, 255, 255, 0.34);
 }
 
 #navbar {
@@ -91,8 +85,6 @@ header div h3 {
     position: fixed; /* Sticky/fixed navbar */
     top: 0; /* At the top */
     z-index: 99;
-    font-size: 20;
-    font-family: 'Source Sans Pro';
 }
 
 @media screen and (max-width: 580px) {
@@ -114,20 +106,10 @@ header div h3 {
     font-size: 40px;
 }
 
-/*!
- * Start Bootstrap - Stylish Portfolio v5.0.1 (https://startbootstrap.com/template-overviews/stylish-portfolio)
- * Copyright 2013-2018 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/master/LICENSE)
- */
-
 body,
 html {
     width: 100%;
     height: 100%;
-}
-
-body {
-    font-family: 'Source Sans Pro';
 }
 
 .btn-xl {
@@ -484,10 +466,6 @@ a:hover, a:focus, a:active {
     color: #ecb807 !important;
 }
 
-#login,#logout,#sign-up {
-    color: #4CAEE3;
-}
-
 #login,#logout,#sign-up:hover {
     cursor: pointer;
 }
@@ -499,32 +477,14 @@ a:hover, a:focus, a:active {
     right: 24px;
 }
 
- .login-email {
+ .login-email, .login-password {
     height: 38px;
-    padding-left: 20px;
-    border-top-right-radius: 11px;
-    border-top-left-radius: 11px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid rgba(76, 174, 227, 0.54);
 }
 
- .login-submitbutton {
-    width: 100%;
-    height: 36px;
-    border: none;
-    border-bottom-left-radius: 11px;
-    border-bottom-right-radius: 11px;
-}
-
- .login-password  {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid rgba(76, 174, 227, 0.54);
+#login-submitbutton{
     height: 38px;
-    padding-left: 20px;
+    padding: 0;
+    width: 98%;
 }
 
 /*register page */

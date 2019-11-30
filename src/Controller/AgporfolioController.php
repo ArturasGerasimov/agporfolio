@@ -37,7 +37,6 @@ class AgporfolioController extends AbstractController
         $loginForm->handleRequest($request);
 
         $userOnline = $this->getUser();
-        //user registration
 
         return $this->render('main-page/main-index.html.twig', [
             'loginForm'    => $loginForm->createView(),
@@ -52,11 +51,8 @@ class AgporfolioController extends AbstractController
     public function register(Request $request, AuthenticationUtils $utils)
     {
 
-
         $userOnline = $this->getUser();
-        //user registration
         $user = new User();
-        dump($user);
         $registerForm = $this->createForm(RegisterType::class, $user);
         $registerForm->handleRequest($request);
 
@@ -101,7 +97,6 @@ class AgporfolioController extends AbstractController
 
         $comments = new Comments();
         $form = $this->createForm(CommentType::class, $comments);
-//        $this->denyAccessUnlessGranted('view', $form);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comments->setUser( $this->getUser());
