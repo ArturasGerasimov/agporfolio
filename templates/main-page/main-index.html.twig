@@ -7,6 +7,11 @@
             /*transform: skewY(-7deg);*/
         }
 
+        .callout {
+            background: url("{{ asset('images/resume.png') }}");
+            height: 100vh;
+        }
+
     </style>
 
 <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
@@ -68,63 +73,64 @@
 
 <!-- About -->
 
-<div id="white-background">
+<div>
 
-    <section class="content-section bg-light" id="about">
-        <div class="container text-center">
+    <section class="content-section bg-light " id="about">
+        <div class="container text-center" style="height: 420px">
             <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <h2>This can be your next web page!</h2>
-                    <p class="lead mb-5"></p>
-                    <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+                <div class="mx-auto">
+                    <div class="overline"></div>
+                    <h2 class="custom-h2 mb-5">This can be your next web page!</h2>
+                    <a class="js-scroll-trigger custom-button bordo-background text-white" href="#services">What We Offer</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services -->
-    <section class="content-section bg-primary text-white text-center" id="services">
-        <div class="container">
+    <section class="content-section text-center grey-backgraud" id="services">
+        <div class="container" style="height: 100vh; padding-top: 100px">
             <div class="content-section-heading">
-                <h3 class="text-secondary mb-0">Services</h3>
-                <h2 class="mb-5">What I Offer</h2>
+                <h3 class="text-secondary mb-0 text-bordo">Services</h3>
+                <div class="overline-bordo"></div>
+                <h2 class="mb-5" style="height: 150px;">What I Offer</h2>
             </div>
             <div class="row">
                 <div  class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-            <span id="shake" class="service-icon rounded-circle mx-auto mb-3">
-              <i  class="icon-screen-smartphone"></i>
+            <span class="mx-auto mb-3">
             </span>
-                    <h4>
+                    <img class="service-images" src="{{ asset('images/responsive.png') }}" alt="responsiveImg">
+                    <h4 class="mt-5 mb-3">
                         <strong>Responsive</strong>
                     </h4>
-                    <p class="text-faded mb-0">Your page will look great on any screen size!</p>
+                    <p class="mb-0">Your page will look great on any screen size!</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-            <span id="shake" class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-pencil"></i>
+            <span class="mx-auto mb-3">
             </span>
-                    <h4>
+                    <img class="service-images" src="{{ asset('images/design.png') }}" alt="designImg">
+                    <h4 class="mt-5 mb-3">
                         <strong>Designed</strong>
                     </h4>
-                    <p class="text-faded mb-0">Bespoke website solutions tailored to your requirements.</p>
+                    <p class=" mb-0">Bespoke website solutions tailored to your requirements.</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-            <span id="shake" class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-like"></i>
+            <span class="mx-auto mb-3">
             </span>
-                    <h4>
+                    <img class="service-images" src="{{ asset('images/prof.png') }}" alt="professionalImg">
+                    <h4 class="mt-5 mb-3">
                         <strong>Professional</strong>
                     </h4>
-                    <p class="text-faded mb-0">A perfectly developed website from start to finish</p>
+                    <p class="mb-0">A perfectly developed website from start to finish</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-            <span id="shake" class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-mustache"></i>
+            <span class="mx-auto mb-3">
             </span>
-                    <h4>
+                    <img class="service-images" src="{{ asset('images/question.png') }}" alt="questionImg">
+                    <h4 class="mt-5 mb-3">
                         <strong>Question</strong>
                     </h4>
-                    <p class="text-faded mb-0">I mustache you a question...</p>
+                    <p class=" mb-0"> I mustache you a question...</p>
                 </div>
             </div>
         </div>
@@ -284,7 +290,7 @@
 
         function scrollFunction() {
             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.1)";
+                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.6)";
                 document.getElementById("navbar").style.padding = "0 0 20px 0";
                 document.getElementById("logo").style.fontSize = "25px";
                 document.getElementById("logo").style.fontSize = "25px";
@@ -300,78 +306,78 @@
 
         //writing and deleting animation
 
-        // List of sentences
-        var _CONTENT = [
-            "Your trusted web developer!",
-            "There are no limits to your page..."
-        ];
-
-        // Current sentence being processed
-        var _PART = 0;
-
-        // Character number of the current sentence being processed
-        var _PART_INDEX = 0;
-
-        // Holds the handle returned from setInterval
-        var _INTERVAL_VAL;
-
-        // Element that holds the text
-        var _ELEMENT = document.querySelector("#text");
-
-        // Cursor element
-        var _CURSOR = document.querySelector("#cursor");
-
-        // Implements typing effect
-        function Type() {
-            // Get substring with 1 characater added
-            var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX++;
-
-            // If full sentence has been displayed then start to delete the sentence after some time
-            if(text === _CONTENT[_PART]) {
-                // Hide the cursor
-                _CURSOR.style.display = 'none';
-
-                clearInterval(_INTERVAL_VAL);
-                setTimeout(function() {
-                    _INTERVAL_VAL = setInterval(Delete, 50);
-                }, 1000);
-            }
-        }
-
-        // Implements deleting effect
-        function Delete() {
-            // Get substring with 1 characater deleted
-            var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX--;
-
-            // If sentence has been deleted then start to display the next sentence
-            if(text === '') {
-                clearInterval(_INTERVAL_VAL);
-
-                // If current sentence was last then display the first one, else move to the next
-                if(_PART == (_CONTENT.length - 1))
-                    _PART = 0;
-                else
-                    _PART++;
-
-                _PART_INDEX = 0;
-
-                // Start to display the next sentence after some time
-                setTimeout(function() {
-                    _CURSOR.style.display = 'inline-block';
-                    _INTERVAL_VAL = setInterval(Type, 100);
-                }, 200);
-            }
-        }
-
-        // Start the typing effect on load
-        _INTERVAL_VAL = setInterval(Type, 100);
-
-        (function($) {
-            "use strict"; // Start of use strict
+        // // List of sentences
+        // var _CONTENT = [
+        //     "Your trusted web developer!",
+        //     "There are no limits to your page..."
+        // ];
+        //
+        // // Current sentence being processed
+        // var _PART = 0;
+        //
+        // // Character number of the current sentence being processed
+        // var _PART_INDEX = 0;
+        //
+        // // Holds the handle returned from setInterval
+        // var _INTERVAL_VAL;
+        //
+        // // Element that holds the text
+        // var _ELEMENT = document.querySelector("#text");
+        //
+        // // Cursor element
+        // var _CURSOR = document.querySelector("#cursor");
+        //
+        // // Implements typing effect
+        // function Type() {
+        //     // Get substring with 1 characater added
+        //     var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+        //     _ELEMENT.innerHTML = text;
+        //     _PART_INDEX++;
+        //
+        //     // If full sentence has been displayed then start to delete the sentence after some time
+        //     if(text === _CONTENT[_PART]) {
+        //         // Hide the cursor
+        //         _CURSOR.style.display = 'none';
+        //
+        //         clearInterval(_INTERVAL_VAL);
+        //         setTimeout(function() {
+        //             _INTERVAL_VAL = setInterval(Delete, 50);
+        //         }, 1000);
+        //     }
+        // }
+        //
+        // // Implements deleting effect
+        // function Delete() {
+        //     // Get substring with 1 characater deleted
+        //     var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+        //     _ELEMENT.innerHTML = text;
+        //     _PART_INDEX--;
+        //
+        //     // If sentence has been deleted then start to display the next sentence
+        //     if(text === '') {
+        //         clearInterval(_INTERVAL_VAL);
+        //
+        //         // If current sentence was last then display the first one, else move to the next
+        //         if(_PART == (_CONTENT.length - 1))
+        //             _PART = 0;
+        //         else
+        //             _PART++;
+        //
+        //         _PART_INDEX = 0;
+        //
+        //         // Start to display the next sentence after some time
+        //         setTimeout(function() {
+        //             _CURSOR.style.display = 'inline-block';
+        //             _INTERVAL_VAL = setInterval(Type, 100);
+        //         }, 200);
+        //     }
+        // }
+        //
+        // // Start the typing effect on load
+        // _INTERVAL_VAL = setInterval(Type, 100);
+        //
+        // (function($) {
+        //     "use strict"; // Start of use strict
 
             // Closes the sidebar menu
             // $(".menu-toggle").click(function(e) {
@@ -396,23 +402,23 @@
             });
 
             // Closes responsive menu when a scroll trigger link is clicked
-            $('#sidebar-wrapper .js-scroll-trigger').click(function() {
-                $("#sidebar-wrapper").removeClass("active");
-                $(".menu-toggle").removeClass("active");
-                $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
-            });
+            // $('#sidebar-wrapper .js-scroll-trigger').click(function() {
+            //     $("#sidebar-wrapper").removeClass("active");
+            //     $(".menu-toggle").removeClass("active");
+            //     $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+            // });
 
-            // Scroll to top button appear
-            $(document).scroll(function() {
-                var scrollDistance = $(this).scrollTop();
-                if (scrollDistance > 100) {
-                    $('.scroll-to-top').fadeIn();
-                } else {
-                    $('.scroll-to-top').fadeOut();
-                }
-            });
+            // // Scroll to top button appear
+            // $(document).scroll(function() {
+            //     var scrollDistance = $(this).scrollTop();
+            //     if (scrollDistance > 100) {
+            //         $('.scroll-to-top').fadeIn();
+            //     } else {
+            //         $('.scroll-to-top').fadeOut();
+            //     }
+            // });
 
-        })(jQuery); // End of use strict
+        // })(jQuery); // End of use strict
 
         // Disable Google Maps scrolling
         // See http://stackoverflow.com/a/25904582/1607849
