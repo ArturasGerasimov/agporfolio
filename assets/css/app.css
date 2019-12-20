@@ -13,9 +13,18 @@
     color: #28D2DE !important;
 }
 
+.custom-wthite-shadow {
+    text-shadow: -3px 4px 6px;
+}
+
 /************/
-.info {
-    font-family: calibri;
+* {
+    font-family: Raleway;
+}
+
+
+html {
+    scroll-behavior: smooth !important;
 }
 
 .surname, h3 {
@@ -75,11 +84,13 @@ header div h3 {
 }
 
 /*navbar*/
-.nav-link, #logo {
-    text-shadow: -4px 5px 11px rgba(255, 255, 255, 0.34);
+#home-page-link {
+    padding: 8px 2px 0px 2px;
+    border-bottom: 1px solid;
 }
 
 #navbar {
+    text-transform: uppercase;
     overflow: hidden;
     transition: 0.6s; /* Adds a transition effect when the padding is decreased */
     position: fixed; /* Sticky/fixed navbar */
@@ -472,12 +483,12 @@ a:hover, a:focus, a:active {
 
 /* login form*/
 
- .login-form {
+.login-form {
     top: 85px;
     right: 24px;
 }
 
- .login-email, .login-password {
+.login-email, .login-password {
     height: 38px;
 }
 
@@ -485,89 +496,4 @@ a:hover, a:focus, a:active {
     height: 38px;
     padding: 0;
     width: 98%;
-}
-
-/*register page */
-
-/*dark background to support form theme*/
-/*body {*/
-/*    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);*/
-/*}*/
-/*sass variables used*/
-/*site container*/
-.wrapper {
-    width: 420px;
-    margin: 0 auto;
-}
-h1 {
-    text-align: center;
-    padding: 30px 0px 0px 0px;
-    font: 25px Oswald;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: #000 0px 1px 5px;
-    margin: 0px;
-}
-
-.form {
-    width: 100%;
-}
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 98%;
-    padding: 15px 0px 15px 8px;
-    border-radius: 5px;
-    box-shadow: inset 4px 6px 10px -4px rgba(0, 0, 0, 0.3), 0 1px 1px -1px rgba(255, 255, 255, 0.3);
-    background: rgba(0, 0, 0, 0.2);
-    outline: none;
-    border: none;
-    border: 1px solid rgba(0, 0, 0, 1);
-    margin-bottom: 10px;
-    color: #6e6e6e;
-    text-shadow: #000 0px 1px 5px;
-}
-button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28d2de), to(#1a878f));
-    background-image: -webkit-linear-gradient(#28d2de 0%, #1a878f 100%);
-    background-image: -moz-linear-gradient(#28d2de 0%, #1a878f 100%);
-    background-image: -o-linear-gradient(#28d2de 0%, #1a878f 100%);
-    background-image: linear-gradient(#28d2de 0%, #1a878f 100%);
-    font: 14px Oswald;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: #000 0px 1px 5px;
-    border: 1px solid #000;
-    opacity: 0.7;
-    -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-    border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
-    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
-}
-input:focus {
-    box-shadow: inset 4px 6px 10px -4px rgba(0, 0, 0, 0.7), 0 1px 1px -1px rgba(255, 255, 255, 0.3);
-    background: rgba(0, 0, 0, 0.3);
-    -webkit-transition: 1s ease;
-    -moz-transition: 1s ease;
-    -o-transition: 1s ease;
-    -ms-transition: 1s ease;
-    transition: 1s ease;
-}
-input[type="submit"]:hover {
-    opacity: 1;
-    cursor: pointer;
-}
-.name-help, .email-help {
-    display: none;
-    padding: 0px;
-    margin: 0px 0px 15px 0px;
-}
-.optimize {
-    position: fixed;
-    right: 3%;
-    top: 0px;
 }
