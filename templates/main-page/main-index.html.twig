@@ -48,9 +48,9 @@
                             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
                         <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
-                            <input class="login-email" type="text" name="_username" value="{{ lastUsername }}" placeholder="Email">
-                            <input class="login-password" type="password" name="_password" placeholder="Password">
-                            <button id="login-submitbutton" type="submit">Login</button>
+                            <input type="text" name="_username" value="{{ lastUsername }}" placeholder="Email">
+                            <input type="password" name="_password" placeholder="Password">
+                            <button id="login-submit button" type="submit">Login</button>
                         </form>
                     </li>
                     <li class="nav-item px-2">
@@ -210,7 +210,7 @@
                             <a id="email-me-btn" class="custom-button bordo-background text-white text-uppercase" href="mailto:arturas.gerasimov@gmail.com">Email me!</a>
                         </dl>
                     </address>
-                    <p class="text-muted small pl-4 mb-5">Copyright &copy; Artūras Gerasimov Website 2018</p>
+                    <p class="text-muted small pl-4 mb-4">Copyright &copy; Artūras Gerasimov Website 2018</p>
                 </div>
                 <div class="col-lg-6 social-icons position-relative">
                     <a class="position-absolute facebook-icon" href="https://www.facebook.com/arturas.gerasimov"><i class="fab fa-facebook"></i></a>

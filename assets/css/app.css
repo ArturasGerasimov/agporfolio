@@ -45,6 +45,7 @@ html {
     font-weight: normal;
 }
 
+
 /*navbar*/
 #home-page-link {
     padding: 8px 2px 0px 2px;
@@ -120,18 +121,31 @@ html {
 
 .login-form {
     top: 85px;
-    right: 24px;
+    right: 27px;
 }
 
-.login-email, .login-password {
-    height: 38px;
+input[type=text] {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
 }
 
-#login-submitbutton{
-    height: 38px;
-    padding: 0;
-    width: 98%;
+input[type=password] {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
 }
+
+button[type=submit] {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(195, 99, 88, 0.98);
+}
+
 
 /*about section*/
 
