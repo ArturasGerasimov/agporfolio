@@ -119,6 +119,10 @@ html {
 
 /* login form*/
 
+#login:hover{
+    cursor: pointer;
+}
+
 .login-form {
     top: 85px;
     right: 27px;
