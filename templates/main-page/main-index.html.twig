@@ -67,7 +67,7 @@
 <!-- Header -->
 <header class="masthead d-flex main-page-image">
     <div class="container text-center my-auto position-relative">
-        <div class="mb-1 custom-wthite-shadow text-white" style="font-size: 75px;">Artūras Gerasimov</div>
+        <div class="mb-1 text-white" style="font-size: 75px;">Artūras Gerasimov</div>
     </div>
 </header>
 
@@ -79,7 +79,7 @@
         <div class="container text-center" style="height: 420px">
             <div class="row">
                 <div class="mx-auto">
-                    <div class="overline"></div>
+                    <div class="uderline-section"></div>
                     <h2 class="custom-h2 mb-5">This can be your next web page!</h2>
                     <a class="js-scroll-trigger custom-button bordo-background text-white" href="#services">What We Offer</a>
                 </div>
@@ -92,7 +92,7 @@
         <div class="container" style="height: 100vh; padding-top: 100px">
             <div class="content-section-heading">
                 <h3 class="text-secondary mb-0 text-bordo">Services</h3>
-                <div class="overline-bordo"></div>
+                <div class="uderline-bordo"></div>
                 <h2 class="mb-5" style="height: 150px;">What I Offer</h2>
             </div>
             <div class="row">
@@ -139,116 +139,85 @@
     <!-- Callout -->
     <section id="resume" class="callout">
         <div class="container text-center">
-            <h2 class="mx-auto mb-5 text-uppercase">Here is my resume!</h2>
-            <div class="overline"></div>
+            <h2 class="mx-auto mb-5 text-uppercase uderline-resume">Here is my resume!</h2>
             <a class="custom-button bordo-background text-white text-uppercase" href="{{ path('resume') }}">Have a look!</a>
         </div>
     </section>
 
     <!-- Portfolio -->
-    <section class="content-section" id="portfolio">
+    <section class="content-section mt-5" id="portfolio">
         <div class="container">
-            <div class="content-section-heading text-center">
-                <h3 class="text-secondary mb-0">Portfolio</h3>
-                <h2 class="mb-5">Recent Projects</h2>
+            <div class="content-section-heading text-center pb-5">
+                <h3 class="text-bordo text-uppercase">Portfolio</h3>
+                <div class="uderline-bordo"></div>
+                <h2 class="text-uppercase ">Recent Projects</h2>
             </div>
-            <div class="row no-gutters">
-                <div class="col-lg-6">
-                    <a class="portfolio-item" href="rgb_game/colorGame.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>RGB game!</h2>
-                  <p class="mb-0">Great game to learn RGB colors!</p>
-                </span>
-              </span>
-                        <img class="img-fluid" src="{{ asset('images/portfolio-1.jpg') }}" alt="">
+            <div class="row no-gutters mt-5">
+                <div class="col-lg-6" style="padding: 22px">
+                    <a class="position-relative" href="rgb_game/colorGame.html">
+                        <span class="position-absolute text-on-image">
+                          <h2 class="text-uppercase">RGB game!</h2>
+                          <p class="mb-0 text-uppercase">Great game to learn RGB colors!</p>
+                        </span>
+                        <img class="img-fluid portfolio-image" src="{{ asset('images/rbg-game.png') }}" alt="">
                     </a>
                 </div>
-                <div class="col-lg-6">
-                    <a class="portfolio-item" href="projektas/index.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>My first web page</h2>
-                  <p class="mb-0">A project I did at Vilnius Coding School. The website is connected to the database and features the options to signup, login/logout</p>
-                </span>
-              </span>
-                        <img class="img-fluid" src="{{ asset('images/portfolio-2.jpg') }}" alt="">
+                <div class="col-lg-6" style="padding: 22px">
+                    <a class="position-relative" href="projektas/index.html">
+                        <span class="position-absolute text-on-image">
+                          <h2 class="text-uppercase">My first web page</h2>
+                          <p class="mb-0 text-uppercase">A project I did at Vilnius Coding School. The website is connected to the database and features the options to signup, login/logout</p>
+                        </span>
+                        <img class="img-fluid portfolio-image" src="{{ asset('images/school-project.png') }}" alt="">
                     </a>
                 </div>
-                <div class="col-lg-6">
-                    <a class="portfolio-item" href="baneriai/index.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>First Official Job - DONE!</h2>
-                  <p class="mb-0">Rebuilt code, adapted to all browsers</p>
-                </span>
-              </span>
-                        <img class="img-fluid" src="{{ asset('images/portfolio-3.jpg') }}" alt="">
+                <div class="col-lg-6" style="padding: 22px">
+                    <a class="position-relative" href="baneriai/index.html">
+                        <span class="position-absolute text-on-image">
+                          <h2 class="text-uppercase">First Official Job - DONE!</h2>
+                          <p class="mb-0 text-uppercase">Rebuilt code, adapted to all browsers</p>
+                        </span>
+                        <img class="img-fluid portfolio-image" src="{{ asset('images/cubes.png') }}" alt="">
                     </a>
                 </div>
-                <div class="col-lg-6">
-                    <a class="portfolio-item" href="sound_game/paper.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Smash TheKeyboard!</h2>
-                  <p class="mb-0">Make your own melodies, expand your imagination!</p>
-                </span>
-              </span>
-                        <img class="img-fluid" src="{{ asset('images/portfolio-4.jpg') }}" alt="">
+                <div class="col-lg-6" style="padding: 22px">
+                    <a class="position-relative" href="sound_game/paper.html">
+                        <span class="position-absolute text-on-image">
+                          <h2 class="text-uppercase">Smash TheKeyboard!</h2>
+                          <p class="mb-0 text-uppercase">Make your own melodies, expand your imagination!</p>
+                        </span>
+                        <img class="img-fluid portfolio-image" src="{{ asset('images/smash.png') }}" alt="">
                     </a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="content-section bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">It's always fun to chat! Let me know what’s on your mind</h2>
-            <a href="tel:+37060840108" class="btn btn-xl btn-light mr-4">Call me!</a>
-            <a href="mailto:arturas.gerasimov@gmail.com" class="btn btn-xl btn-dark">Email me!</a>
-        </div>
-    </section>
-
-
-    <!-- Map -->
-    <section id="contact" class="map">
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d147553.9540675093!2d25.112850930799695!3d54.70028863925414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93fb5c6408f5%3A0x400d18c70e9dc40!2sVilnius!5e0!3m2!1slt!2slt!4v1548529517213"></iframe>
-        <br/>
-        <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
     </section>
 
     <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="container">
-            <ul class="list-inline mb-5">
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/arturas.gerasimov">
-                        <i class="icon-social-facebook"></i>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/art%C5%ABras-gerasimov-536627135/">
-                        <i class="icon-social-linkedin"></i>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white" href="https://github.com/ArturasGerasimov">
-                        <i class="icon-social-github"></i>
-                    </a>
-                </li>
-            </ul>
-            <address>
-                <dl>
-                    <dt>Phone number:</dt>
-                    <dd><a href="tel:+37060840108">+37060840108</a></dd>
-                    <dt>Email:</dt>
-                    <dd><a href="mailto:arturas.gerasimov@gmail.com">arturas.gerasimov@gmail.com</a></dd>
-                </dl>
-            </address>
-            <p class="text-muted small mb-0">Copyright &copy; Artūras Gerasimov Website 2018</p>
+    <footer class="footer">
+        <div class="container flex-row justify-content-between">
+            <div class="row">
+                <div class="col-lg-6">
+                    <address class="address-contacts">
+                        <dl>
+                            <dt>Phone number:</dt>
+                            <strong><dd class="mt-3 mb-4">+37060840108</dd></strong>
+                            <a id="call-me-btn" class="custom-button bordo-background text-white text-uppercase mt-2" href="tel:+37060840108">Call me!</a>
+                        </dl>
+                        <dl>
+                            <dt>Email:</dt>
+                            <strong><dd class="mt-3 mb-4"><a >arturas.gerasimov@gmail.com</a></dd></strong>
+                            <a id="email-me-btn" class="custom-button bordo-background text-white text-uppercase" href="mailto:arturas.gerasimov@gmail.com">Email me!</a>
+                        </dl>
+                    </address>
+                    <p class="text-muted small pl-4 mb-5">Copyright &copy; Artūras Gerasimov Website 2018</p>
+                </div>
+                <div class="col-lg-6 social-icons position-relative">
+                    <a class="position-absolute facebook-icon" href="https://www.facebook.com/arturas.gerasimov"><i class="fab fa-facebook"></i></a>
+                    <a class="position-absolute github-icon" href="https://github.com/ArturasGerasimov"><i class="fab fa-github"></i></a>
+                    <a class="position-absolute linkedin-icon" href="https://www.linkedin.com/in/art%C5%ABras-gerasimov-536627135/"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 

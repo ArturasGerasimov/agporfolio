@@ -135,13 +135,13 @@ html {
 
 /*about section*/
 
-.overline {
+.uderline-section {
     text-align: center;
     border-bottom: 1px solid #000000;
     margin: 90px 40% 89px 40%;
 }
 
-.overline-bordo {
+.uderline-bordo {
     text-align: center;
     border-bottom: 1px solid rgba(174, 38, 23, 0.98);
     margin: 10px 40% 60px 40%;
@@ -151,4 +151,79 @@ html {
 
 .service-images {
     height: 120px;
+}
+
+/*portfolio*/
+
+.uderline-resume {
+    width: 31%;
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 8px;
+}
+
+.col-lg-6 {
+    padding: 22px !important;
+}
+
+.portfolio-image {
+    border-radius: 8px;
+}
+
+.text-on-image {
+    color: #000 !important;
+    top: 75px;
+    padding: 0 30px;
+}
+
+span h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/*footer*/
+
+.footer {
+    margin-top: 100px;
+}
+
+.address-contacts {
+    padding: 23px;
+    display: flex;
+}
+
+dl {
+    width: 230px;
+}
+
+#call-me-btn {
+    background-color: rgba(130, 110, 108, 0.71);
+}
+
+#email-me-btn {
+    background-color: #c36358;
+}
+
+.facebook-icon, .facebook-icon:hover {
+    color: #3b5998;
+    right: 160px;
+    top: 100px;
+    opacity: 0.68;
+    font-size: 50px;
+}
+
+.github-icon, .github-icon:hover {
+    color: #000;
+    right: 100px;
+    top: 100px;
+    opacity: 0.68;
+    font-size: 50px;
+}
+
+.linkedin-icon, .linkedin-icon:hover{
+    color: #0e76a8;
+    right: 40px;
+    top: 100px;
+    opacity: 0.68;
+    font-size: 50px;
 }
