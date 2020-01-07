@@ -1,34 +1,34 @@
 {% extends("base.html.twig")%}
 {% block body %}
     <style>
-        .main-page-image {
-            background: url("{{ asset('images/top-page-image.jpg') }}");
-            background-size: cover;
-            /*transform: skewY(-7deg);*/
-            height: 100vh;
-        }
+        {#.main-page-image {#}
+        {#    background: url("{{ asset('images/top-page-image.jpg') }}");#}
+        {#    background-size: cover;#}
+        {#    /*transform: skewY(-7deg);*/#}
+        {#    height: 100vh;#}
+        {#}#}
     </style>
 
-    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
+    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light register-navbar">
         <a id="logo" class="navbar-brand text-white" href="{{ path('main-page') }}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
-    <div class=" main-page-image">
+    <div class="register-form-container">
+        <div class="container text-center">
+            <div class="wrapper">
+                <div class="uderline-section"></div>
+                <h1 class="text-uppercase font-weight-bold">Register For An Account</h1>
+                <p class="text-uppercase mt-4 mb-4">To sign-up for a free basic account please provide us with some basic information using
+                    {{ form_start(registerForm) }}
+                    {{ form_row(registerForm.user_nick) }}
+                    {{ form_row(registerForm.plainPassword.first) }}
+                    {{ form_row(registerForm.plainPassword.second) }}
+                    {{ form_row(registerForm.submit, {'attr': {'class': 'custom-button bordo-background text-white'}}) }}
+                    {{ form_end(registerForm) }}
+            </div>
 
-        <div class="wrapper">
-            <h1>Register For An Account</h1>
-            <p class="text-white">To sign-up for a free basic account please provide us with some basic information using
-            {{ form_start(registerForm, {'attr': {'class': 'registertype-form'}}) }}
-            {{ form_row(registerForm.username, {'attr': {'class': 'registertype-form_input'}}) }}
-            {{ form_row(registerForm.surname, {'attr': {'class': 'registertype-form_input'}}) }}
-            {{ form_row(registerForm.email, {'attr': {'class': 'registertype-form_input'}}) }}
-            {{ form_row(registerForm.user_nick, {'attr': {'class': 'registertype-form_input'}}) }}
-            {{ form_row(registerForm.plainPassword.first, {'attr': {'class': 'email'}}) }}
-            {{ form_row(registerForm.plainPassword.second, {'attr': {'class': 'submit'}}) }}
-            {{ form_row(registerForm.submit, {'attr': {'class': 'submit'}}) }}
-            {{ form_end(registerForm) }}
         </div>
 
     </div>

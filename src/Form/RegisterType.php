@@ -18,21 +18,10 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, [
-                'label' => false,
-                'attr' => ['placeholder' => 'Username',]
-            ])
-            ->add('surname', TextType::class, [
-                'label' => false,
-                'attr' => ['placeholder' => 'Surname',]
-            ])
             ->add('user_nick', TextType::class, [
                 'label' => false,
                 'attr' => ['placeholder' => 'User nickname',]
             ])
-            ->add('email' , EmailType::class,[
-                'label' => false,
-                'attr' => ['placeholder' => 'Email',]])
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array(
@@ -43,7 +32,9 @@ class RegisterType extends AbstractType
                     'attr' => ['placeholder' => 'Repeat password',]),
                 'invalid_message' => 'Please make sure your passwords match',
             ))
-            ->add('submit', SubmitType::class);
+            ->add('submit', SubmitType::class, [
+                "label" => "SIGN UP"
+            ]);
             }
 
     public function configureOptions(OptionsResolver $resolver)

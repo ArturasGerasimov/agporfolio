@@ -124,25 +124,32 @@ html {
 }
 
 .login-form {
+    border-radius: 10px;
     top: 85px;
     right: 27px;
 }
 
-input[type=text] {
+#login-usernick {
+    box-shadow: 1px 1px 9px inset;
     padding: 5px 20px;
     margin-bottom: 10px;
     border: none;
     border-radius: 10px;
 }
 
-input[type=password] {
+#login-password{
+    box-shadow: 1px 1px 9px inset;
     padding: 5px 20px;
     margin-bottom: 10px;
     border: none;
     border-radius: 10px;
 }
 
-button[type=submit] {
+#login-submit:hover {
+cursor: pointer;
+}
+
+#login-submit {
     padding: 5px 20px;
     margin-bottom: 10px;
     border: none;
@@ -150,6 +157,53 @@ button[type=submit] {
     background-color: rgba(195, 99, 88, 0.98);
 }
 
+/*register*/
+
+#register_user_nick {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .3);
+    width: 500px;
+    padding: 15px 0 15px 48px;
+    font-weight: bold;
+}
+
+#register_plainPassword_first {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .3);
+    width: 500px;
+    padding: 15px 0 15px 48px;
+    font-weight: bold;
+}
+
+#register_plainPassword_second {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .3);
+    width: 500px;
+    padding: 15px 0 15px 48px;
+    font-weight: bold;
+}
+
+#register_submit {
+    margin-top: 26px;
+    border: none;
+    height: 45px;
+    width: 226px;
+}
+
+.register-navbar {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.register-form-container {
+    margin-top: 12%;
+}
+
+.font-weight-bold {
+    letter-spacing: 1px;
+}
 
 /*about section*/
 
