@@ -153,4 +153,21 @@ class AgporfolioController extends AbstractController
 
         return $this->redirectToRoute('comments');
     }
+
+
+    /**
+     * @Route("/rgb-game", name="rbg-game")
+     */
+    public function rbgGame()
+    {
+        return $this->render("projects/rbg-game.html.twig");
+    }
+
+    /**
+     * @Route("/cube", name="cube")
+     */
+    public function cube()
+    {
+        return $this->render("projects/cube.html.twig");
+    }
 }

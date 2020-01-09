@@ -7,14 +7,15 @@
         }
 
         .callout {
-            background: url("{{ asset('images/resume.jpg') }}");
+            background: url("{{ asset('images/test.jpg') }}");
+            background-size: cover;
             height: 100vh;
-            width: 100vw;
+            box-shadow: inset 0px 628px 198px -469px #fff;
         }
 
     </style>
 
-<nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
+<nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ml-5 mt-3">
                 <li class="nav-item px-3">
@@ -154,7 +155,7 @@
             </div>
             <div class="row no-gutters mt-5">
                 <div class="col-lg-6" style="padding: 22px">
-                    <a class="position-relative" href="rgb_game/colorGame.html">
+                    <a class="position-relative" href="{{ path("rbg-game")}}">
                         <span class="position-absolute text-on-image">
                           <h2 class="text-uppercase">RGB game!</h2>
                           <p class="mb-0 text-uppercase">Great game to learn RGB colors!</p>
@@ -172,7 +173,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6" style="padding: 22px">
-                    <a class="position-relative" href="baneriai/index.html">
+                    <a class="position-relative" href="{{ path("cube")}}">
                         <span class="position-absolute text-on-image">
                           <h2 class="text-uppercase">First Official Job - DONE!</h2>
                           <p class="mb-0 text-uppercase">Rebuilt code, adapted to all browsers</p>
@@ -345,18 +346,18 @@
         //     "use strict"; // Start of use strict
 
             // Smooth scrolling using jQuery easing
-            $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        $('html, body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000, "easeInOutExpo");
-                        return false;
-                    }
-                }
-            });
+            // $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+            //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            //         var target = $(this.hash);
+            //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            //         if (target.length) {
+            //             $('html, body').animate({
+            //                 scrollTop: target.offset().top
+            //             }, 1000, "easeInOutExpo");
+            //             return false;
+            //         }
+            //     }
+            // });
 
             // Closes responsive menu when a scroll trigger link is clicked
             $('#sidebar-wrapper .js-scroll-trigger').click(function() {

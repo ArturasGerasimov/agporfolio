@@ -1,0 +1,128 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <style>
+
+        .page {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            margin-top: -600px;
+        }
+
+        .box-wrapper {
+            perspective: 800px;
+            perspective-origin: 50% 100px;
+        }
+
+        .box-faces {
+            position: relative;
+            width: 200px;
+            transform-style: preserve-3d;
+        }
+        .box-faces p {
+            padding: 40px 0;
+        }
+        .box-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+        }
+
+        .box-face--is-back {
+            -webkit-transform: translateZ(-160px) translateX(50px) rotateY(180deg);
+            -ms-transform: translateZ(-160px) translateX(50px) rotateY(180deg);
+            transform: translateZ(-160px) translateX(50px) rotateY(180deg);
+        }
+        .box-face--is-right {
+            -webkit-transform: rotateY(-270deg) translateX(60px) translateZ(50px);
+            -ms-transform: rotateY(-270deg) translateX(60px) translateZ(50px);
+            transform: rotateY(-270deg) translateX(60px) translateZ(50px);
+            -webkit-transform-origin: top right;
+            -ms-transform-origin: top right;
+            transform-origin: top right;
+        }
+        .box-face--is-left {
+            -webkit-transform: rotateY(270deg) translateX(-160px) translateZ(50px);
+            -ms-transform: rotateY(270deg) translateX(-160px) translateZ(50px);
+            transform: rotateY(270deg) translateX(-160px) translateZ(50px);
+            -webkit-transform-origin: center left;
+            -ms-transform-origin: center left;
+            transform-origin: center left;
+        }
+        .box-face--is-top {
+            -webkit-transform: rotateX(-90deg) translateY(-100px);
+            -ms-transform: rotateX(-90deg) translateY(-100px);
+            transform: rotateX(-90deg) translateY(-100px);
+            -webkit-transform-origin: top center;
+            -ms-transform-origin: top center;
+            transform-origin: top center;
+        }
+        .box-face--is-bottom {
+            -webkit-transform: rotateX(90deg) translateY(100px);
+            -ms-transform: rotateX(90deg) translateY(100px);
+            transform: rotateX(90deg) translateY(100px);
+            -webkit-transform-origin: bottom center;
+            -ms-transform-origin: bottom center;
+            transform-origin: bottom center;
+        }
+        .box-face--is-front {
+            -webkit-transform: translateZ(140px) translateX(-50px);
+            -ms-transform: translateZ(140px) translateX(-50px);
+            transform: translateZ(140px) translateX(-50px);
+        }
+
+        @-webkit-keyframes spin {
+            50% {-webkit-transform: rotateY(-45deg) rotateY(-45deg) scale3d(.8, .8, .8) }
+            100% {-webkit-transform: rotateY(0deg) rotateY(-90deg) }
+        }
+
+        @-ms-keyframes spin {
+            50% {-ms-transform: rotateY(-45deg) rotateY(-45deg) scale3d(.8, .8, .8) }
+            100% {-ms-transform: rotateY(0deg) rotateY(-90deg) }
+        }
+
+        .box-faces {
+            -webkit-animation: spin 3s infinite linear;
+            -ms-animation: spin 3s infinite linear;
+            animation: spin 3s infinite linear;
+        }
+    </style>
+
+    <div class="page">
+        <div class="container">
+            <div class="shadow-wrapper">
+                <div class="shadow">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div class="box-wrapper">
+                <div class="box-faces">
+                    <div class="box-face box-face--is-front">
+                        <img src="{{ asset('images/300x600.jpg') }}">
+                    </div>
+                    <div class="box-face box-face--is-back">
+                        <img src="{{ asset('images/300x600.jpg') }}">
+                    </div>
+                    <div class="box-face box-face--is-top"></div>
+                    <div class="box-face box-face--is-bottom"></div>
+                    <div class="box-face box-face--is-left">
+                        <img src="{{ asset('images/300x600.jpg') }}">
+                    </div>
+                    <div class="box-face box-face--is-right">
+                        <img src="{{ asset('images/300x600.jpg') }}">
+                    </div>
+
+                </div><!-- end of .box -->
+            </div><!-- end of .box-wrapper -->
+        </div><!-- /.container -->
+    </div><!-- /.page -->
+
+
+{% endblock %}
