@@ -50,6 +50,8 @@ class AgporfolioController extends AbstractController
      */
     public function register(Request $request, AuthenticationUtils $utils)
     {
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
 
         $userOnline = $this->getUser();
         $user = new User();
@@ -72,6 +74,8 @@ class AgporfolioController extends AbstractController
         return $this->render('security/register.html.twig', [
             'registerForm' => $registerForm->createView(),
             'user'         => $userOnline,
+            'error'        => $error,
+            'lastUsername' => $lastUsername
         ]);
     }
 
@@ -92,8 +96,11 @@ class AgporfolioController extends AbstractController
     /**
      * @Route("/comments", name="comments")
      */
-    public function comments(Request $request)
+    public function comments(Request $request, AuthenticationUtils $utils)
     {
+        $userOnline = $this->getUser();
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
 
         $comments = new Comments();
         $form = $this->createForm(CommentType::class, $comments);
@@ -113,7 +120,10 @@ class AgporfolioController extends AbstractController
 
         return $this->render("comments/comments.html.twig", [
             'form' => $form->createView(),
-            'comments' => $comments
+            'comments' => $comments,
+            'user' => $userOnline,
+            'error'        => $error,
+            'lastUsername' => $lastUsername
         ]);
     }
 

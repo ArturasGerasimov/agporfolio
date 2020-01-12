@@ -1,19 +1,56 @@
 {% extends("base.html.twig")%}
 {% block body %}
     <style>
-        {#.main-page-image {#}
-        {#    background: url("{{ asset('images/top-page-image.jpg') }}");#}
-        {#    background-size: cover;#}
-        {#    /*transform: skewY(-7deg);*/#}
-        {#    height: 100vh;#}
-        {#}#}
+        .nav-image {
+            background: url("{{ asset('images/navbar.jpg') }}");
+            background-size: cover;
+        }
+
     </style>
 
-    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light register-navbar">
-        <a id="logo" class="navbar-brand text-white" href="{{ path('main-page') }}">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
+    <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light nav-image">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav ml-5 mt-3">
+                <li class="nav-item px-3">
+                    <a id="home-page-link" class="nav-link js-scroll-trigger text-white" href="{{ path("main-page")}}">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link js-scroll-trigger text-white" href="{{ path("resume") }}">Resume</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link js-scroll-trigger text-white" href="{{ path("comments") }}">Comments</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto mr-5 mt-3">
+                {% if app.user %}
+                    <li class="nav-item px-2">
+                        <a class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" id="logout">Logout</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
+                    </li>
+                {% else %}
+                    <li class="nav-item position-relative px-2">
+                        <span class="nav-link js-scroll-trigger text-white" id="login">Login</span>
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
+                            <input id="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Email">
+                            <input id="login-password" type="password" name="_password" placeholder="Password">
+                            <button id="login-submit" type="submit">Login</button>
+                        </form>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link js-scroll-trigger text-white nav-uderscore" href="{{ path('register') }}">Sign Up</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+        </div>
     </nav>
     <div class="register-form-container">
         <div class="container text-center">
@@ -38,21 +75,23 @@
 
      <script>
 
-        window.onscroll = function() {scrollFunction()};
+         $( "#sign-up" ).click(function() {
+             if ($("#register-popup").hasClass("display-none")){
+                 $(".login-form").fadeOut("slow").addClass("display-none");
+                 $("#register-popup").slideDown("slow").removeClass("display-none").css("display", "block");
+             } else {
+                 $("#register-popup").slideUp("slow").addClass("display-none");
+             }
+         });
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.1)";
-                document.getElementById("navbar").style.padding = "3px";
-                document.getElementById("logo").style.fontSize = "25px";
-            } else {
-                document.getElementById("navbar").style.background = "none";
-                document.getElementById("navbar").style.padding = "10px";
-                document.getElementById("logo").style.fontSize = "40px";
-                document.getElementById("logo").style.transition = ".4s";
-            }
-        }
-
+         $( "#login" ).click(function() {
+             if ($(".login-form").hasClass("display-none")){
+                 $("#register-popup").fadeOut("slow").addClass("display-none");
+                 $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
+             } else {
+                 $(".login-form").slideUp("slow").addClass("display-none");
+             }
+         });
 
      </script>
 {% endblock %}

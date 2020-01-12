@@ -7,7 +7,7 @@
         }
 
         .callout {
-            background: url("{{ asset('images/test.jpg') }}");
+            background: url("{{ asset('images/resume.jpg') }}");
             background-size: cover;
             height: 100vh;
             box-shadow: inset 0px 628px 198px -469px #fff;
@@ -19,16 +19,16 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ml-5 mt-3">
                 <li class="nav-item px-3">
-                    <a id="home-page-link" class="nav-link js-scroll-trigger text-white" href="#page-top">Home</a>
+                    <a id="home" class="nav-link js-scroll-trigger text-white nav-uderscore" href="#page-top">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link js-scroll-trigger text-white" href="#services">What I offer</a>
+                    <a id="service" class="nav-link js-scroll-trigger text-white" href="#services">What I offer</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link js-scroll-trigger text-white" href="#resume">Resume</a>
+                    <a id="cv" class="nav-link js-scroll-trigger text-white" href="#resume">Resume</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link js-scroll-trigger text-white" href="#portfolio">Recent Projects</a>
+                    <a id="projects" class="nav-link js-scroll-trigger text-white" href="#portfolio">Recent Projects</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link js-scroll-trigger text-white" href="{{ path("comments") }}">Comments</a>
@@ -234,6 +234,27 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
     <script>
+
+            $("#service").click(function () {
+                $(this).addClass("nav-uderscore");
+                $("#home, #cv, #projects").removeClass("nav-uderscore");
+            });
+
+            $("#home").click(function () {
+                $(this).addClass("nav-uderscore");
+                $("#service, #cv, #projects").removeClass("nav-uderscore");
+            });
+
+            $("#cv").click(function () {
+                $(this).addClass("nav-uderscore");
+                $("#service, #projects, #home").removeClass("nav-uderscore");
+            });
+
+            $("#projects").click(function () {
+                $(this).addClass("nav-uderscore");
+                $("#service, #cv, #home").removeClass("nav-uderscore");
+            });
+
 
             $( "#sign-up" ).click(function() {
                 if ($("#register-popup").hasClass("display-none")){
