@@ -1,20 +1,58 @@
 {% extends "base.html.twig" %}
 {% block body %}
 
+    <style>
+        .nav-image {
+            background: url("{{ asset('images/navbar.jpg') }}");
+            background-size: cover;
+        }
 
-    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a id="logo" class="navbar-brand" href="{{ path('main-page') }}">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    </style>
+
+    <nav id="navbar" class="navbar fixed-top navbar-expand-sm nav-image">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active js-scroll-trigger" href="#contact">Contacts <span class="sr-only">(current)</span></a>
-            </div>
+            <ul class="navbar-nav ml-5 mt-3">
+                <li class="nav-item px-3">
+                    <a id="home-page-link" class="nav-link js-scroll-trigger text-white" href="{{ path('main-page') }}">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link js-scroll-trigger text-white  nav-uderscore" href="{{ path("resume") }}">Resume</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link js-scroll-trigger text-white" href="{{ path("comments") }}">Comments</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto mr-5 mt-3">
+                {% if app.user %}
+                    <li class="nav-item px-2">
+                        <a class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" id="logout">Logout</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
+                    </li>
+                {% else %}
+                    <li class="nav-item position-relative px-2">
+                        <span class="nav-link js-scroll-trigger text-white" id="login">Login</span>
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
+                            <input id="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Email">
+                            <input id="login-password" type="password" name="_password" placeholder="Password">
+                            <button id="login-submit" type="submit">Login</button>
+                        </form>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link js-scroll-trigger text-white" href="{{ path('register') }}">Sign Up</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container margin-top-200">
         <div class="row">
             <div class="info container">
                 <div>
@@ -25,10 +63,10 @@
                 </div>
                 <div>
                     <ul class="move-left">
-                        <li>Phone: <a href="tel:+37060840108">+37060840108</a></li>
-                        <li>E-mail: <a href="mailto:arturas.gerasimov@gmail.com">arturas.gerasimov@gmail.com</a></li>
-                        <li>LinkedIn: <a href="https://www.linkedin.com/in/artūras-gerasimov-536627135/">https://www.linkedin.com/in/artūras-gerasimov-536627135/</a>  </li>
-                        <li>github: <a href="https://github.com/ArturasGerasimov">https://github.com/ArturasGerasimov</a></li>
+                        <li>Phone: <a class="text-bordo" href="tel:+37060840108">+37060840108</a></li>
+                        <li>E-mail: <a class="text-bordo" href="mailto:arturas.gerasimov@gmail.com">arturas.gerasimov@gmail.com</a></li>
+                        <li>LinkedIn: <a class="text-bordo" href="https://www.linkedin.com/in/artūras-gerasimov-536627135/">https://www.linkedin.com/in/artūras-gerasimov-536627135/</a>  </li>
+                        <li>github: <a class="text-bordo" href="https://github.com/ArturasGerasimov">https://github.com/ArturasGerasimov</a></li>
                     </ul>
                 </div>
 
@@ -117,78 +155,5 @@
         </div>
     </div>
 
-
-
-    <!-- Map -->
-    <section id="contact" class="map">
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d147553.9540675093!2d25.112850930799695!3d54.70028863925414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93fb5c6408f5%3A0x400d18c70e9dc40!2sVilnius!5e0!3m2!1slt!2slt!4v1548529517213"></iframe>
-        <br/>
-        <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="container">
-            <ul class="list-inline mb-5">
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/arturas.gerasimov">
-                        <i class="icon-social-facebook"></i>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/art%C5%ABras-gerasimov-536627135/">
-                        <i class="icon-social-linkedin"></i>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white" href="https://github.com/ArturasGerasimov">
-                        <i class="icon-social-github"></i>
-                    </a>
-                </li>
-            </ul>
-            <address>
-                <dl>
-                    <dt>Phone number:</dt>
-                    <dd><a href="tel:+37060840108">+37060840108</a></dd>
-                    <dt>Email:</dt>
-                    <dd><a href="mailto:arturas.gerasimov@gmail.com">arturas.gerasimov@gmail.com</a></dd>
-                </dl>
-            </address>
-            <p class="text-muted small mb-0">Copyright &copy; Artūras Gerasimov Website 2018</p>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
 {% endblock %}
-{% block javascripts %}
-    <script>
-        window.onscroll = function() {scrollFunction()};
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.1)";
-                document.getElementById("navbar").style.padding = "3px";
-                document.getElementById("logo").style.fontSize = "25px";
-            } else {
-                document.getElementById("navbar").style.background = "none";
-                document.getElementById("navbar").style.padding = "10px";
-                document.getElementById("logo").style.fontSize = "40px";
-                document.getElementById("logo").style.transition = ".4s";
-            }
-        }
-
-    </script>
-{% endblock %}

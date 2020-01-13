@@ -50,30 +50,35 @@
 
             </ul>
         </div>
-        </div>
     </nav>
-    <div class="container " style="margin-top: 200px">
-        {% if app.user  %}
-            {{ form_start(form) }}
-            {{ form_row(form.comment) }}
-            {{ form_row(form.submit, {'attr': {'class': 'w-25'}}) }}
-            {{ form_end(form) }}
-        {% endif %}
 
-        {% for comment in comments %}
-            <div class="media border p-3 m-1">
-                <div class="media-body">
-                    <h4>{{ comment.user.usernick }} <small><i>Posted on {{ comment.date|date("Y-m-d")  }}</i></small></h4>
-                    <p>{{ comment.comment }}</p>
-                </div>
-                {% if is_granted('edit', comment)%}
-                <div class="display-grid">
-                    <a href="{{ path('comment-edit', {'userComments': comment.id}) }}"><i class="fas fa-pen"></i> Edit comment</a>
-                    <a href="{{ path('comment-delete', {'userComments': comment.id}) }}"><i class="fas fa-trash"></i> Delete comment</a>
-                </div>
+    <div class="container margin-top-200">
+        <div class="row">
+            <div class="col-sm-8">
+                {% for comment in comments %}
+                    <div class="media p-3 m-1">
+                        <div class="media-body">
+                            <h4>{{ comment.user.usernick }} <small><i>Posted on {{ comment.date|date("Y-m-d")  }}</i></small></h4>
+                            <p>{{ comment.comment }}</p>
+                        </div>
+                        {% if is_granted('edit', comment)%}
+                            <div class="display-grid">
+                                <a href="{{ path('comment-edit', {'userComments': comment.id}) }}"><i class="fas fa-pen"></i> Edit</a>
+                                <a href="{{ path('comment-delete', {'userComments': comment.id}) }}" class="text-bordo" onclick="return confirm('Are you sure you want to delete this comment?');"><i class="fas fa-trash text-bordo"></i> Delete</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-4" style="margin-top: 64px">
+                {% if app.user  %}
+                    {{ form_start(form) }}
+                    {{ form_row(form.comment, {'attr': {'class': 'comment'}}) }}
+                    {{ form_row(form.submit, {'attr': {'class': ' custom-button bordo-background text-white w-75'}}) }}
+                    {{ form_end(form) }}
                 {% endif %}
             </div>
-        {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
@@ -99,22 +104,6 @@
                  $(".login-form").slideUp("slow").addClass("display-none");
              }
          });
-
-
-         window.onscroll = function() {scrollFunction()};
-
-         function scrollFunction() {
-             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                 document.getElementById("navbar").style.background = "url(\"{{ asset('images/navbar.jpg') }}\")";
-                 document.getElementById("navbar").style.opacity = "0.7";
-             } else {
-                 document.getElementById("navbar").style.background = "url(\"{{ asset('images/navbar.jpg') }}\")";
-                 document.getElementById("navbar").style.transition = ".4s";
-                 document.getElementById("navbar").style.opacity = "1";
-                 document.getElementById("navbar").style.color = "#fff";
-             }
-         }
-
 
      </script>
  {% endblock %}

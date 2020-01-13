@@ -82,9 +82,17 @@ class AgporfolioController extends AbstractController
     /**
      * @Route("/resume", name="resume")
      */
-    public function resume()
+    public function resume(AuthenticationUtils $utils)
     {
-        return $this->render('resume/resume.html.twig');
+        $userOnline = $this->getUser();
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
+
+        return $this->render('resume/resume.html.twig', [
+            'user'         => $userOnline,
+            'error'        => $error,
+            'lastUsername' => $lastUsername
+        ]);
     }
 
     /**
@@ -130,8 +138,11 @@ class AgporfolioController extends AbstractController
     /**
      * @Route("/comm/edit/{userComments}", name="comment-edit")
      */
-    public function updateUserComments(Comments $userComments, Request $request)
+    public function updateUserComments(Comments $userComments, Request $request, AuthenticationUtils $utils)
     {
+        $userOnline = $this->getUser();
+        $error = $utils->getLastAuthenticationError();
+        $lastUsername = $utils->getLastUsername();
 
         $form = $this->createForm(CommentType::class, $userComments);
         $form->handleRequest($request);
@@ -148,7 +159,10 @@ class AgporfolioController extends AbstractController
             'comments/comment-edit.html.twig',
             [
                 'form' => $form->createView(),
-                'userComments' => $userComments
+                'userComments' => $userComments,
+                'user' => $userOnline,
+                'error'        => $error,
+                'lastUsername' => $lastUsername
             ]
         );
     }
