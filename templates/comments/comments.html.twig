@@ -63,7 +63,7 @@
                         </div>
                         {% if is_granted('edit', comment)%}
                             <div class="display-grid">
-                                <a href="{{ path('comment-edit', {'userComments': comment.id}) }}"><i class="fas fa-pen"></i> Edit</a>
+                                <a style="color: #717477;" href="{{ path('comment-edit', {'userComments': comment.id}) }}"><i class="fas fa-pen"></i> Edit</a>
                                 <a href="{{ path('comment-delete', {'userComments': comment.id}) }}" class="text-bordo" onclick="return confirm('Are you sure you want to delete this comment?');"><i class="fas fa-trash text-bordo"></i> Delete</a>
                             </div>
                         {% endif %}

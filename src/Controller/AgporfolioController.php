@@ -50,6 +50,7 @@ class AgporfolioController extends AbstractController
      */
     public function register(Request $request, AuthenticationUtils $utils)
     {
+
         $error = $utils->getLastAuthenticationError();
         $lastUsername = $utils->getLastUsername();
 
@@ -58,18 +59,19 @@ class AgporfolioController extends AbstractController
         $registerForm = $this->createForm(RegisterType::class, $user);
         $registerForm->handleRequest($request);
 
-        if ($registerForm->isSubmitted() && $registerForm->isValid()) {
-            $user->setPassword($this->passwordEncoder->encodePassword(
-                $user, $registerForm->get('plainPassword')->getData()
-            ));
+            if ($registerForm->isSubmitted() && $registerForm->isValid()) {
+                $user->setPassword($this->passwordEncoder->encodePassword(
+                    $user, $registerForm->get('plainPassword')->getData()
+                ));
 
-            $user->setRole("ROLE_USER");
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+                $user->setRole("ROLE_USER");
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('main-page');
-        }
+                return $this->redirectToRoute('main-page');
+            }
+
 
         return $this->render('security/register.html.twig', [
             'registerForm' => $registerForm->createView(),

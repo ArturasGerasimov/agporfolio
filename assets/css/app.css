@@ -162,6 +162,14 @@ cursor: pointer;
     background-color: rgba(195, 99, 88, 0.98);
 }
 
+#error-mesage {
+    font-size: 13px;
+    position: absolute;
+    left: -174px;
+    top: -7px;
+    width: 200px;
+}
+
 /*register*/
 
 #register_user_nick {
@@ -218,7 +226,6 @@ cursor: pointer;
     border-bottom: 1px solid rgba(0,0,0, .3);
     width: 350px;
     padding: 0 0 0 42px;
-    font-weight: bold;
 }
 
 .comment-edit{
