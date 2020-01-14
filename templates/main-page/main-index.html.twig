@@ -16,7 +16,7 @@
     </style>
 
 <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ml-5 mt-3">
                 <li class="nav-item px-3">
                     <a id="home" class="nav-link js-scroll-trigger text-white nav-uderscore" href="#page-top">Home</a>
@@ -234,59 +234,74 @@
 
     <script>
 
-            $("#service").click(function () {
-                $(this).addClass("nav-uderscore");
-                $("#home, #cv, #projects").removeClass("nav-uderscore");
-            });
+        // Scroll to top button appear
+        $(document).scroll(function() {
+            var scrollDistance = $(this).scrollTop();
+            if (scrollDistance > 100) {
+                $('.scroll-to-top').fadeIn();
+            } else {
+                $('.scroll-to-top').fadeOut();
+            }
+        });
 
-            $("#home").click(function () {
-                $(this).addClass("nav-uderscore");
-                $("#service, #cv, #projects").removeClass("nav-uderscore");
-            });
+        // sets underscore
+        $("#service").click(function () {
+            $(this).addClass("nav-uderscore");
+            $("#home, #cv, #projects").removeClass("nav-uderscore");
+        });
 
-            $("#cv").click(function () {
-                $(this).addClass("nav-uderscore");
-                $("#service, #projects, #home").removeClass("nav-uderscore");
-            });
+        $("#home").click(function () {
+            $(this).addClass("nav-uderscore");
+            $("#service, #cv, #projects").removeClass("nav-uderscore");
+        });
 
-            $("#projects").click(function () {
-                $(this).addClass("nav-uderscore");
-                $("#service, #cv, #home").removeClass("nav-uderscore");
-            });
+        $("#cv").click(function () {
+            $(this).addClass("nav-uderscore");
+            $("#service, #projects, #home").removeClass("nav-uderscore");
+        });
 
+        $("#projects").click(function () {
+            $(this).addClass("nav-uderscore");
+            $("#service, #cv, #home").removeClass("nav-uderscore");
+        });
 
-            $( "#sign-up" ).click(function() {
-                if ($("#register-popup").hasClass("display-none")){
-                    $(".login-form").fadeOut("slow").addClass("display-none");
-                    $("#register-popup").slideDown("slow").removeClass("display-none").css("display", "block");
-                } else {
-                    $("#register-popup").slideUp("slow").addClass("display-none");
-                }
-            });
+        // login animation
+        $( "#sign-up" ).click(function() {
+            if ($("#register-popup").hasClass("display-none")){
+                $(".login-form").fadeOut("slow").addClass("display-none");
+                $(this).slideDown("slow").removeClass("display-none").css("display", "block");
+            } else {
+                $(this).slideUp("slow").addClass("display-none");
+            }
+        });
 
-            $( "#login" ).click(function() {
-                if ($(".login-form").hasClass("display-none")){
-                    $("#register-popup").fadeOut("slow").addClass("display-none");
-                    $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
-                } else {
-                    $(".login-form").slideUp("slow").addClass("display-none");
-                }
-            });
+        $( "#login" ).click(function() {
+            if ($(".login-form").hasClass("display-none")){
+                $("#register-popup").fadeOut("slow").addClass("display-none");
+                $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
+            } else {
+                $(".login-form").slideUp("slow").addClass("display-none");
+            }
+        });
 
-
-
-        window.onscroll = function() {scrollFunction()};
+        // navbar style
+        $(window).scroll(function (){
+            scrollFunction();
+        });
 
         function scrollFunction() {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0.6)";
-                document.getElementById("navbar").style.padding = "0 0 20px 0";
-            } else {
-                document.getElementById("navbar").style.background = "none";
-                document.getElementById("navbar").style.padding = "10px";
-                document.getElementById("navbar").style.transition = ".4s";
+            if ($(window).width() > 769) {
+                // $('#navbarNavAltMarkup').removeClass('collapse, navbar-collapse');
+                if ($("body").scrollTop() > 80 || $(document).scrollTop() > 80) {
+                    $("#navbar").css({'background': 'rgba(0, 0, 0, 0.6)', 'padding': '0 0 20px 0'});
+                } else {
+                    $("#navbar").css({'background': 'none', 'padding': '10px', 'transition': '.4s'});
+                }
             }
         }
+
+
+
 
 
 
@@ -380,21 +395,13 @@
             // });
 
             // Closes responsive menu when a scroll trigger link is clicked
-            $('#sidebar-wrapper .js-scroll-trigger').click(function() {
-                $("#sidebar-wrapper").removeClass("active");
-                $(".menu-toggle").removeClass("active");
-                $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
-            });
+            // $('#sidebar-wrapper .js-scroll-trigger').click(function() {
+            //     $("#sidebar-wrapper").removeClass("active");
+            //     $(".menu-toggle").removeClass("active");
+            //     $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+            // });
 
-            // Scroll to top button appear
-            $(document).scroll(function() {
-                var scrollDistance = $(this).scrollTop();
-                if (scrollDistance > 100) {
-                    $('.scroll-to-top').fadeIn();
-                } else {
-                    $('.scroll-to-top').fadeOut();
-                }
-            });
+
 
         // })(jQuery); // End of use strict
 

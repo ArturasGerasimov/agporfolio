@@ -337,5 +337,16 @@ dl {
 }
 
 /*mobile version*/
+@media only screen and (max-width: 425px)  {
+    html {
+        width: 139%;
+    }
+
+    #navbar {
+        background: grey;
+        position: sticky;
+    }
+
+}
 
 /*tablet version*/
