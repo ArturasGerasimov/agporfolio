@@ -374,6 +374,28 @@ dl {
         top: 25px;
     }
 
+    #login-usernick {
+        box-shadow: 1px 1px 9px inset;
+        padding: 5px 20px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 10px;
+        width: 174px;
+        font-size: 20px;
+    }
+
+    #login-password {
+        box-shadow: 1px 1px 9px inset;
+        padding: 5px 20px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 10px;
+        width: 174px;
+        font-size: 20px;
+    }
+
+
+
 }
 
 /*tablet version*/
