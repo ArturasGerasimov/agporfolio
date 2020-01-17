@@ -54,7 +54,7 @@
                             <button id="login-submit" type="submit">Login</button>
                         </form>
                     </li>
-                    <li id="sign-up" class="nav-item px-2">
+                    <li id="sign-up-style" class="nav-item px-2">
                         <a id="register" class="nav-link js-scroll-trigger text-white" href="{{ path('register') }}">Sign Up</a>
                     </li>
 
@@ -270,13 +270,13 @@
         $( "#sign-up" ).click(function() {
             if ($("#register-popup").hasClass("display-none")){
                 $(".login-form").fadeOut("slow").addClass("display-none");
-                $(this).slideDown("slow").removeClass("display-none").css("display", "block");
+                $("#register-popup").slideDown("slow").removeClass("display-none").css("display", "block");
             } else {
-                $(this).slideUp("slow").addClass("display-none");
+                $("#register-popup").slideUp("slow").addClass("display-none");
             }
         });
 
-        $( "#login" ).click(function() {
+        $( "#login-span" ).click(function() {
             if ($(".login-form").hasClass("display-none")){
                 $("#register-popup").fadeOut("slow").addClass("display-none");
                 $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
