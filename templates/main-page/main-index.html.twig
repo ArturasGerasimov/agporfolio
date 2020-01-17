@@ -17,8 +17,8 @@
 
 <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light">
     <div class="navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav ml-5 mt-3">
-                <li class="nav-item px-3">
+            <ul id="nav-first-ul" class="navbar-nav ml-5 mt-3">
+                <li id="home-link" class="nav-item px-3">
                     <a id="home" class="nav-link js-scroll-trigger text-white nav-uderscore" href="#page-top">Home</a>
                 </li>
                 <li class="nav-item px-2">
@@ -37,14 +37,14 @@
             <ul class="nav navbar-nav ml-auto mr-5 mt-3">
                 {% if app.user %}
                     <li class="nav-item px-2">
-                        <a class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" id="logout">Logout</a>
+                        <a id="logout" class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" >Logout</a>
                     </li>
                     <li class="nav-item px-2">
                          <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
                     </li>
                 {% else %}
-                    <li class="nav-item position-relative px-2">
-                        <span class="nav-link js-scroll-trigger text-white" id="login">Login</span>
+                    <li id="login" class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white" id="login-span">Login</span>
                         {% if error %}
                             <div id="error-mesage" class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
@@ -54,8 +54,8 @@
                             <button id="login-submit" type="submit">Login</button>
                         </form>
                     </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link js-scroll-trigger text-white" href="{{ path('register') }}">Sign Up</a>
+                    <li id="sign-up" class="nav-item px-2">
+                        <a id="register" class="nav-link js-scroll-trigger text-white" href="{{ path('register') }}">Sign Up</a>
                     </li>
 
                 {% endif %}
@@ -265,6 +265,7 @@
             $("#service, #cv, #home").removeClass("nav-uderscore");
         });
 
+
         // login animation
         $( "#sign-up" ).click(function() {
             if ($("#register-popup").hasClass("display-none")){
@@ -291,7 +292,6 @@
 
         function scrollFunction() {
             if ($(window).width() > 769) {
-                // $('#navbarNavAltMarkup').removeClass('collapse, navbar-collapse');
                 if ($("body").scrollTop() > 80 || $(document).scrollTop() > 80) {
                     $("#navbar").css({'background': 'rgba(0, 0, 0, 0.6)', 'padding': '0 0 20px 0'});
                 } else {
@@ -300,110 +300,12 @@
             }
         }
 
-
-
-
-
-
-        //writing and deleting animation
-
-        // // List of sentences
-        // var _CONTENT = [
-        //     "Your trusted web developer!",
-        //     "There are no limits to your page..."
-        // ];
-        //
-        // // Current sentence being processed
-        // var _PART = 0;
-        //
-        // // Character number of the current sentence being processed
-        // var _PART_INDEX = 0;
-        //
-        // // Holds the handle returned from setInterval
-        // var _INTERVAL_VAL;
-        //
-        // // Element that holds the text
-        // var _ELEMENT = document.querySelector("#text");
-        //
-        // // Cursor element
-        // var _CURSOR = document.querySelector("#cursor");
-        //
-        // // Implements typing effect
-        // function Type() {
-        //     // Get substring with 1 characater added
-        //     var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-        //     _ELEMENT.innerHTML = text;
-        //     _PART_INDEX++;
-        //
-        //     // If full sentence has been displayed then start to delete the sentence after some time
-        //     if(text === _CONTENT[_PART]) {
-        //         // Hide the cursor
-        //         _CURSOR.style.display = 'none';
-        //
-        //         clearInterval(_INTERVAL_VAL);
-        //         setTimeout(function() {
-        //             _INTERVAL_VAL = setInterval(Delete, 50);
-        //         }, 1000);
-        //     }
-        // }
-        //
-        // // Implements deleting effect
-        // function Delete() {
-        //     // Get substring with 1 characater deleted
-        //     var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-        //     _ELEMENT.innerHTML = text;
-        //     _PART_INDEX--;
-        //
-        //     // If sentence has been deleted then start to display the next sentence
-        //     if(text === '') {
-        //         clearInterval(_INTERVAL_VAL);
-        //
-        //         // If current sentence was last then display the first one, else move to the next
-        //         if(_PART == (_CONTENT.length - 1))
-        //             _PART = 0;
-        //         else
-        //             _PART++;
-        //
-        //         _PART_INDEX = 0;
-        //
-        //         // Start to display the next sentence after some time
-        //         setTimeout(function() {
-        //             _CURSOR.style.display = 'inline-block';
-        //             _INTERVAL_VAL = setInterval(Type, 100);
-        //         }, 200);
-        //     }
-        // }
-        //
-        // // Start the typing effect on load
-        // _INTERVAL_VAL = setInterval(Type, 100);
-        //
-        // (function($) {
-        //     "use strict"; // Start of use strict
-
-            // Smooth scrolling using jQuery easing
-            // $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-            //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            //         var target = $(this.hash);
-            //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            //         if (target.length) {
-            //             $('html, body').animate({
-            //                 scrollTop: target.offset().top
-            //             }, 1000, "easeInOutExpo");
-            //             return false;
-            //         }
-            //     }
-            // });
-
-            // Closes responsive menu when a scroll trigger link is clicked
-            // $('#sidebar-wrapper .js-scroll-trigger').click(function() {
-            //     $("#sidebar-wrapper").removeClass("active");
-            //     $(".menu-toggle").removeClass("active");
-            //     $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
-            // });
-
-
-
-        // })(jQuery); // End of use strict
+        if ($(window).width() < 769) {
+            $('.navbar-nav').removeClass('ml-5');
+            $('#home-link').removeClass('px-3').addClass('px-2');
+            $('#login-span').html( '<i class="fas fa-sign-in-alt"></i>' );
+            $('#register').html( '<i class="fas fa-user-plus"></i>' );
+        }
 
     </script>
 {% endblock %}

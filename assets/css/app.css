@@ -211,7 +211,7 @@ cursor: pointer;
 }
 
 .register-form-container {
-    margin-top: 12%;
+    margin-top: 13%;
 }
 
 .font-weight-bold {
@@ -345,6 +345,33 @@ dl {
     #navbar {
         background: grey;
         position: sticky;
+    }
+
+    .nav-uderscore {
+        margin-bottom: .5rem;
+        width: 159px;
+    }
+
+    #error-mesage {
+        font-size: 14px;
+        position: absolute;
+        left: 213px;
+        top: -20px;
+        width: 200px;
+    }
+
+    #login {
+        font-size: 21px;
+        position: absolute;
+        right: 64px;
+        top: 24px;
+    }
+
+    #sign-up{
+        font-size: 21px;
+        position: absolute;
+        right: 14px;
+        top: 25px;
     }
 
 }
