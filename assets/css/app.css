@@ -317,6 +317,7 @@ dl {
 }
 
 .facebook-icon, .facebook-icon:hover {
+    position: absolute;
     color: #3b5998;
     right: 160px;
     top: 100px;
@@ -325,6 +326,7 @@ dl {
 }
 
 .github-icon, .github-icon:hover {
+    position: absolute;
     color: #000;
     right: 100px;
     top: 100px;
@@ -333,6 +335,7 @@ dl {
 }
 
 .linkedin-icon, .linkedin-icon:hover{
+    position: absolute;
     color: #0e76a8;
     right: 40px;
     top: 100px;
@@ -408,21 +411,17 @@ dl {
         font-size: 11px;
     }
 
-    .facebook-icon, .facebook-icon:hover {
-        right: 225px;
-        top: -34px;
-    }
-
+    .facebook-icon, .facebook-icon:hover,
+    .linkedin-icon, .linkedin-icon:hover,
     .github-icon, .github-icon:hover {
-        right: 150px;
-        top: -34px;
+        position: relative;
+        right: 0;
+        top: 0;
     }
 
-    .linkedin-icon, .linkedin-icon:hover{
-        right: 75px;
-        top: -34px;
+    .social-icons {
+        text-align: center;
     }
-
 
 }
 
