@@ -344,10 +344,8 @@ dl {
 }
 
 /*mobile version*/
+
 @media only screen and (max-width: 425px)  {
-    html {
-        width: 100vw;
-    }
 
     #navbar {
         background: grey;
@@ -399,11 +397,15 @@ dl {
 
     .main-page-image {
         font-size: 23px;
-        height: 190px;
+        height: 350px;
     }
 
     .callout {
         margin-top: 800px;
+    }
+
+    .uderline-resume {
+        width: 60%;
     }
 
     .text-on-image {
@@ -415,18 +417,26 @@ dl {
     .linkedin-icon, .linkedin-icon:hover,
     .github-icon, .github-icon:hover {
         position: relative;
+        margin-left: 15px;
         right: 0;
         top: 0;
     }
 
     .social-icons {
-        text-align: center;
+        text-align: left;
     }
 
 }
 
+@media only screen and (max-width: 320px)  {
+    .text-on-image {
+        bottom: -77px;
+    }
+}
+
+
 /*tablet version*/
-@media only screen and (min-width: 425px) and  (max-width: 768px){
+@media only screen and (min-width: 426px) and  (max-width: 768px){
     #login {
         font-size: 1rem;
         padding: 0;
@@ -436,6 +446,24 @@ dl {
         font-size: 1rem;
         padding-bottom: 25px;
 
+    }
+
+    .main-page-image {
+        font-size: 33px;
+        height: 100vh;
+    }
+
+    .callout {
+        margin-top: 190px;
+    }
+
+    .facebook-icon, .facebook-icon:hover,
+    .linkedin-icon, .linkedin-icon:hover,
+    .github-icon, .github-icon:hover {
+        position: relative;
+        margin-left: 15px;
+        right: 0;
+        top: 0;
     }
 }
 
