@@ -426,6 +426,13 @@ dl {
         text-align: left;
     }
 
+    #register_user_nick,
+    #register_plainPassword_first,
+    #register_plainPassword_second{
+        width: 100%;
+
+    }
+
 }
 
 @media only screen and (max-width: 320px)  {
@@ -445,6 +452,13 @@ dl {
     #register{
         font-size: 1rem;
         padding-bottom: 25px;
+
+    }
+
+    #register_user_nick,
+    #register_plainPassword_first,
+    #register_plainPassword_second{
+        width: 100%;
 
     }
 

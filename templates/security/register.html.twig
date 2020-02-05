@@ -8,8 +8,59 @@
 
     </style>
 
+    {#    mobile nav#}
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark d-lg-none d-xl-none">
+        <!-- Brand -->
+        <a class="navbar-brand" href="{{ path('main-page') }}">Home</a>
 
-    <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light nav-image">
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="cv" class="nav-link js-scroll-trigger text-white" href="{{ path('resume') }}">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger text-white " href="{{ path("comments") }}">Comments</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto mr-5 mt-3">
+                {% if app.user %}
+                    <li class="nav-item px-2">
+                        <a id="logout" class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" >Logout</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
+                    </li>
+                {% else %}
+                    <li id="login" class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white" id="login-span">Login</span>
+                        {% if error %}
+                            <div id="error-mesage" class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
+                            <input id="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Usernick">
+                            <input id="login-password" type="password" name="_password" placeholder="Password">
+                            <button id="login-submit" type="submit">Login</button>
+                        </form>
+                    </li>
+                    <li id="sign-up-style" class="nav-item px-2">
+                        <a id="register" class="nav-link js-scroll-trigger text-white" href="{{ path('register') }}">Sign Up</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    {#    desktop nav#}
+
+    <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light nav-image d-none d-lg-block d-xl-block">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ml-5 mt-3">
                 <li class="nav-item px-3">
