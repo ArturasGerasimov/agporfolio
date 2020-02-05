@@ -339,7 +339,7 @@ dl {
 /*mobile version*/
 @media only screen and (max-width: 425px)  {
     html {
-        width: 139%;
+        width: 100vw;
     }
 
     #navbar {
@@ -356,22 +356,18 @@ dl {
         font-size: 14px;
         position: absolute;
         left: 213px;
-        top: -20px;
+        top: 60px;
         width: 200px;
     }
 
     #login {
-        font-size: 21px;
-        position: absolute;
-        right: 64px;
-        top: 24px;
+        font-size: 1rem;
+        padding: 0;
     }
 
-    #sign-up-style{
-        font-size: 21px;
-        position: absolute;
-        right: 14px;
-        top: 25px;
+    #register{
+        font-size: 1rem;
+        padding: 0;
     }
 
     #login-usernick {
@@ -399,3 +395,17 @@ dl {
 }
 
 /*tablet version*/
+@media only screen and (min-width: 425px) and  (max-width: 768px){
+    #login {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    #register{
+        font-size: 1rem;
+        padding-bottom: 25px;
+
+    }
+}
+
+
