@@ -50,6 +50,10 @@ html {
     font-weight: normal;
 }
 
+.main-page-image {
+    font-size: 75px;
+}
+
 
 /*navbar*/
 .nav-uderscore{
@@ -280,7 +284,7 @@ cursor: pointer;
 
 .text-on-image {
     color: #000 !important;
-    top: 75px;
+    bottom: -168px;
     padding: 0 30px;
 }
 
@@ -390,6 +394,34 @@ dl {
         font-size: 20px;
     }
 
+    .main-page-image {
+        font-size: 23px;
+        height: 190px;
+    }
+
+    .callout {
+        margin-top: 800px;
+    }
+
+    .text-on-image {
+        bottom: -88px;
+        font-size: 11px;
+    }
+
+    .facebook-icon, .facebook-icon:hover {
+        right: 225px;
+        top: -34px;
+    }
+
+    .github-icon, .github-icon:hover {
+        right: 150px;
+        top: -34px;
+    }
+
+    .linkedin-icon, .linkedin-icon:hover{
+        right: 75px;
+        top: -34px;
+    }
 
 
 }
