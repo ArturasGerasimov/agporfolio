@@ -196,4 +196,13 @@ class AgporfolioController extends AbstractController
     {
         return $this->render("projects/cube.html.twig");
     }
+
+    /**
+     * @Route("/smash", name="smash")
+     */
+    public function smash()
+    {
+        return $this->render("projects/smash.html.twig");
+    }
+
 }

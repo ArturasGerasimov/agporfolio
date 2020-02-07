@@ -14,7 +14,7 @@
         }
 
     </style>
-{#    mobile nav#}
+    {#    mobile nav#}
     <nav class="navbar navbar-expand-md bg-dark navbar-dark d-lg-none d-xl-none">
         <!-- Brand -->
         <a class="navbar-brand" href="#">Home</a>
@@ -34,7 +34,7 @@
                     <a id="cv" class="nav-link js-scroll-trigger text-white" href="#resume">Resume</a>
                 </li>
                 <li class="nav-item">
-                    <a id="projects" class="nav-link js-scroll-trigger text-white" href="#portfolio">Recent Projects</a>
+                    <a id="projects" class="nav-link js-scroll-trigger text-white" href="#portfolio">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger text-white" href="{{ path("comments") }}">Comments</a>
@@ -49,15 +49,17 @@
                         <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
                     </li>
                 {% else %}
-                    <li id="login" class="nav-item px-2">
-                        <span class="nav-link js-scroll-trigger text-white" id="login-span">Login</span>
+                    <li id="login-nav-mob" class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white">Login</span>
                         {% if error %}
                             <div id="error-mesage" class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
+                    </li>
+                    <li>
                         <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
-                            <input id="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Usernick">
-                            <input id="login-password" type="password" name="_password" placeholder="Password">
-                            <button id="login-submit" type="submit">Login</button>
+                            <input class="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Usernick">
+                            <input class="login-password" type="password" name="_password" placeholder="Password">
+                            <button class="login-submit" type="submit">Login</button>
                         </form>
                     </li>
                     <li id="sign-up-style" class="nav-item px-2">
@@ -70,9 +72,9 @@
         </div>
     </nav>
 
-{#    desktop nav#}
-<nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light d-none d-lg-block d-xl-block">
-    <div class="navbar-collapse" id="navbarNavAltMarkup">
+    {#    desktop nav#}
+    <nav id="navbar" class="navbar fixed-top navbar-expand-sm navbar-light d-none d-lg-block d-xl-block nav-image">
+        <div class="navbar-collapse" id="navbarNavAltMarkup">
             <ul id="nav-first-ul" class="navbar-nav ml-5 mt-3">
                 <li id="home-link" class="nav-item px-3">
                     <a id="home" class="nav-link js-scroll-trigger text-white nav-uderscore" href="#page-top">Home</a>
@@ -84,7 +86,7 @@
                     <a id="cv" class="nav-link js-scroll-trigger text-white" href="#resume">Resume</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a id="projects" class="nav-link js-scroll-trigger text-white" href="#portfolio">Recent Projects</a>
+                    <a id="projects" class="nav-link js-scroll-trigger text-white" href="#portfolio">Projects</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link js-scroll-trigger text-white" href="{{ path("comments") }}">Comments</a>
@@ -96,18 +98,21 @@
                         <a id="logout" class="nav-link js-scroll-trigger text-white" href="{{ path('logout') }}" >Logout</a>
                     </li>
                     <li class="nav-item px-2">
-                         <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
+                        <span class="nav-link js-scroll-trigger text-white">Logged as {{ user.usernick }}</span>
                     </li>
                 {% else %}
-                    <li id="login" class="nav-item px-2">
-                        <span class="nav-link js-scroll-trigger text-white" id="login-span">Login</span>
+                    <li id="login-desk" class="nav-item px-2">
+                        <span class="nav-link js-scroll-trigger text-white">Login</span>
                         {% if error %}
                             <div id="error-mesage" class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
+
+                    </li>
+                    <li>
                         <form class="login-form position-fixed display-none" action="{{ path('main-page') }}" method="POST">
-                            <input id="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Usernick">
-                            <input id="login-password" type="password" name="_password" placeholder="Password">
-                            <button id="login-submit" type="submit">Login</button>
+                            <input class="login-usernick" type="text" name="_username" value="{{ lastUsername }}" placeholder="Usernick">
+                            <input class="login-password" type="password" name="_password" placeholder="Password">
+                            <button class="login-submit" type="submit">Login</button>
                         </form>
                     </li>
                     <li id="sign-up-style" class="nav-item px-2">
@@ -116,7 +121,7 @@
                 {% endif %}
             </ul>
         </div>
-</nav>
+    </nav>
 
 <!-- Header -->
 <header class="masthead d-flex main-page-image">
@@ -204,7 +209,7 @@
             <div class="content-section-heading text-center pb-5">
                 <h3 class="text-bordo text-uppercase">Portfolio</h3>
                 <div class="uderline-bordo"></div>
-                <h2 class="text-uppercase ">Recent Projects</h2>
+                <h2 class="text-uppercase ">This is where I started</h2>
             </div>
             <div class="row no-gutters mt-5">
                 <div class="col-lg-6" style="padding: 22px">
@@ -216,7 +221,7 @@
                         <img class="img-fluid portfolio-image" src="{{ asset('images/rbg-game.png') }}" alt="">
                     </a>
                 </div>
-                <div class="col-lg-6" style="padding: 22px">
+                <div class="col-lg-6 display-none" style="padding: 22px">
                     <a class="position-relative" href="projektas/index.html">
                         <span class="position-absolute text-on-image">
                           <h2 class="text-uppercase">My first web page</h2>
@@ -234,8 +239,8 @@
                         <img class="img-fluid portfolio-image" src="{{ asset('images/cubes.png') }}" alt="">
                     </a>
                 </div>
-                <div class="col-lg-6" style="padding: 22px">
-                    <a class="position-relative" href="sound_game/paper.html">
+                <div class="col-lg-6 display-none" style="padding: 22px">
+                    <a class="position-relative" href="{{ path("smash")}}">
                         <span class="position-absolute text-on-image">
                           <h2 class="text-uppercase">Smash TheKeyboard!</h2>
                           <p class="mb-0 text-uppercase">Make your own melodies, expand your imagination!</p>
@@ -327,21 +332,28 @@
 
 
         // login animation
-        $( "#sign-up" ).click(function() {
-            if ($("#register-popup").hasClass("display-none")){
-                $(".login-form").fadeOut("slow").addClass("display-none");
-                $("#register-popup").slideDown("slow").removeClass("display-none").css("display", "block");
-            } else {
-                $("#register-popup").slideUp("slow").addClass("display-none");
-            }
-        });
-
-        $( "#login-span" ).click(function() {
+        $( "#login-nav-mob" ).click(function() {
             if ($(".login-form").hasClass("display-none")){
-                $("#register-popup").fadeOut("slow").addClass("display-none");
                 $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
             } else {
                 $(".login-form").slideUp("slow").addClass("display-none");
+            }
+        });
+
+        $( "#login-desk" ).click(function() {
+            if ($(".login-form").hasClass("display-none")){
+                $(".login-form").slideDown("slow").removeClass("display-none").css("display", "grid");
+            } else {
+                $(".login-form").slideUp("slow").addClass("display-none");
+            }
+        });
+
+        $(document).mouseup(function(e)
+        {
+            var loginForm = $(".login-form");
+            if (!loginForm.is(e.target) && loginForm.has(e.target).length === 0)
+            {
+                loginForm.slideUp().addClass("display-none");
             }
         });
 
