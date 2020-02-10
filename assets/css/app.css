@@ -400,10 +400,6 @@ dl {
         height: 350px;
     }
 
-    .callout {
-        margin-top: 800px;
-    }
-
     .uderline-resume {
         width: 60%;
     }
@@ -465,10 +461,6 @@ dl {
     .main-page-image {
         font-size: 33px;
         height: 100vh;
-    }
-
-    .callout {
-        margin-top: 190px;
     }
 
     .facebook-icon, .facebook-icon:hover,
