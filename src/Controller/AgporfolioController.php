@@ -45,7 +45,8 @@ class AgporfolioController extends AbstractController
             'lastUsername' => $lastUsername
         ]);
     }
-/**
+    
+    /**
      * @Route("/register", name="register")
      */
     public function register(Request $request, AuthenticationUtils $utils)
